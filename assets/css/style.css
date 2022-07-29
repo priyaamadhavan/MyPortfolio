@@ -3,17 +3,10 @@
   margin: 0; 
 }
 @font-face {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
-    font-weight: 400;
-    src: local('Inter Bold'), local('Inter-Bold'),
-         url('assets/fonts/Inter-VariableFont_slnt,wght.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-}
-@font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Inter Bold'), local('Inter-Bold'),
+    font-weight: 300;
+    src: local('Inter'), local('Inter'),
          url('assets/fonts/Inter-VariableFont_slnt,wght.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
 }
 body {font-family:'Inter', sans-serif;color: #42405B;}
@@ -88,7 +81,7 @@ h1,h2,h3,h4,h5,h6,p,a {font-family:'Inter', sans-serif;}
 
 }
 .project-list__title {
-    font-size: 28px;
+    font-size: 18px;
     color: #42405B;
     font-weight: 500;
     letter-spacing: 1px;
