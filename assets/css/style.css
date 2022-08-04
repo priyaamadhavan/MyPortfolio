@@ -95,6 +95,7 @@ h1,h2,h3,h4,h5,h6,p,a {font-family:'Inter', sans-serif;}
     background-repeat: no-repeat;
     height: 100%;
     object-fit: contain;
+    min-height: 220px;
 }
 .img-fluid{ transition: transform .5s;}
 .img-fluid:hover{  -ms-transform: scale(1.05); /* IE 9 */
