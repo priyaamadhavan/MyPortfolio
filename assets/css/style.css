@@ -9,22 +9,53 @@
     src: local('Inter'), local('Inter'),
          url('assets/fonts/Inter-VariableFont_slnt,wght.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
 }
-body {font-family:'Inter', sans-serif;color: #42405B;}
+body {font-family:'Inter', sans-serif;color: #fff; background-color:#191A19;}
 h1,h2,h3,h4,h5,h6,p,a {font-family:'Inter', sans-serif;}
+ul{
+    list-style: none;
+}
+a:hover {
+    text-decoration: none;
+}
 .primary-color {
-    color: #42405B;
+    color: #1E5128;
 }
 .bg-color {
-    background-color: #FDF0E2;
+    background-color: #191A19;
 }
 .nav-link {
-    color: #42405B;
+    color: #1E5128;
     font-size: 18px;
+    font-weight: 600;
     letter-spacing: 1px;
+}
+.nav-link:hover {
+    color: #1E5128;
+    font-weight: 400;
 }
 .list-group{list-style-type: none;}
 .social-links {margin: auto;}
-.banner-section{max-width: 610px;}
+.banner-section{min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.banner-section h1 {
+    font-size: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+.banner-section h3 {
+    color: #fff;
+    font-weight: 400;
+        display: grid;
+        font-size: 2rem;
+}
+.banner-bg {
+    background-color: #1E5128;
+}
 .banner-image .img-fluid{
     margin-top:70px;
     width: 430px;
@@ -44,24 +75,24 @@ h1,h2,h3,h4,h5,h6,p,a {font-family:'Inter', sans-serif;}
     color: #42405B;
 }
 .banner-btn a{
-    border-color: #F6661A !important;
+    border-color:#050606 !important;
     border-radius:50px;
-    color: #42405B;
+    color: #fff;
     font-size: 16px;
 }
 .service-title {
-    font-size: 50px;
-    color: #42405B;
+    font-size: 48px;
+    color: #fff;
     display: block;
     line-height: 54px;
 }
 .service-title span {
-    background: -webkit-linear-gradient(#4AC7FA, #E649F5);
+    background: -webkit-linear-gradient(#4E9F3D, #1E5128);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .service-description {
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: 1px;
 }
 .service-list__border, .project-list__dec-items {
@@ -81,8 +112,8 @@ h1,h2,h3,h4,h5,h6,p,a {font-family:'Inter', sans-serif;}
 
 }
 .project-list__title {
-    font-size: 18px;
-    color: #42405B;
+    font-size: 20px;
+    color: #fff;
     font-weight: 500;
     letter-spacing: 1px;
 }
@@ -119,4 +150,77 @@ h1,h2,h3,h4,h5,h6,p,a {font-family:'Inter', sans-serif;}
     }
     .link-border-mobile{display: none;}
     .banner-title {font-size: 36px;}
+}
+/* project case study styling */
+.case-study {
+        background: #191A19;
+}
+.case-study h1 {
+    color: #fff;
+    font-size: 48px;
+}
+.project-head {
+    background: #512D6D;
+    min-height: 550px;
+    margin-top: 106px;
+    border-radius: 20px;
+    padding: 15px;
+
+}
+.project-head h1 {
+    font-size: 11rem;
+    text-align: center;
+    color: #fff;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.project-work-main {
+    max-width: 300px;
+    list-style-type: none;
+}
+.project-work-main li {
+    border: 1px solid #191A19;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+}
+.project-overview {
+    padding: 50px 0;
+}
+.project-subhead {
+    color: #fff;
+}
+br{
+    margin: 30px;
+}
+.p-top-bottom {
+    padding:50px 0;
+}
+.project-text{
+    color: #fff;
+    font-size: 20px;
+    line-height: 32px;
+}
+.project-contribution li{
+    color: #fff;
+    margin: 5px 0;
+}
+.next-project-link {
+    text-align: center;
+}
+.next-project{
+    color: #1E5128;
+    font-weight: 600;
+    font-size: 22px;
+    text-align: center;
+}
+.next-project:hover {
+    color: #1E5128;
+    font-weight: 400;
+}
+.maybe-main {
+    background: #48b8d0;
 }
