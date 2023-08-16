@@ -154,10 +154,13 @@ a:hover {
 }
 .project-head {
     background: #512D6D;
-    min-height: 550px;
+    min-height: 450px;
     margin-top: 106px;
     border-radius: 20px;
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
 }
 .project-head h1 {
@@ -184,6 +187,7 @@ span.profile-color {
     border-radius: 5px;
     color: #fff;
     font-size: 16px;
+    margin-right: 16px;
 }
 .project-overview {
     padding: 50px 0;
