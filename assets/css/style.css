@@ -39,6 +39,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     text-align: center;
+    justify-content: center;
 }
 .banner-section h1 {
     font-size: 8rem;
@@ -54,7 +55,7 @@ a:hover {
         font-size: 2rem;
 }
 .banner-bg {
-    background-color: #1E5128;
+    background-color: #262626 !important;
 }
 .banner-image .img-fluid{
     margin-top:70px;
@@ -75,10 +76,11 @@ a:hover {
     color: #42405B;
 }
 .banner-btn a{
-    border-color:#050606 !important;
+    border-color:#c2410c !important;
     border-radius:50px;
     color: #fff;
     font-size: 16px;
+    padding: 12px 27px;
 }
 .service-title {
     font-size: 48px;
@@ -87,7 +89,7 @@ a:hover {
     line-height: 54px;
 }
 .service-title span {
-    background: -webkit-linear-gradient(#4E9F3D, #1E5128);
+    background: -webkit-linear-gradient(#9a3412, #c2410c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -98,18 +100,9 @@ a:hover {
 .service-list__border, .project-list__dec-items {
   border-width: 3px;
   padding: 10px 20px;
-  /*filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));*/
-    transition: filter 0.2s;
-    background-image:radial-gradient(circle at 100% 100%, transparent 2px, #AA00FF 2px, #AA00FF 4px, transparent 4px),
-    linear-gradient(to right, #AA00FF, #0091EA),
-    radial-gradient(circle at 0% 100%, transparent 2px, #0091EA 2px, #0091EA 4px, transparent 4px),
-    linear-gradient(to bottom, #0091EA, #64DD17), radial-gradient(circle at 0% 0%, transparent 2px, #64DD17 2px, #64DD17 4px, transparent 4px),
-    linear-gradient(to left, #64DD17, #FF6D00), radial-gradient(circle at 100% 0%, transparent 2px, #FF6D00 2px, #FF6D00 4px, transparent 4px),
-    linear-gradient(to top, #FF6D00, #AA00FF);
-    background-position:top left, top center, top right, center right, bottom right, bottom center, bottom left, center left;
-    background-size:4px 4px, calc(100% - (2 * 4px)) 2px, 4px 4px, 2px calc(100% - (2 * 4px));
-    background-repeat:no-repeat;
-
+    border: 1px solid #262626;
+    border-radius: 5px;
+    background: #262626;
 }
 .project-list__title {
     font-size: 20px;
@@ -168,13 +161,18 @@ a:hover {
 
 }
 .project-head h1 {
-    font-size: 11rem;
+    font-size: 4rem;
     text-align: center;
     color: #fff;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
+    line-height: 86px;
+    margin-bottom: 3rem;
+}
+.welcome-note {
+    font-size: 1.5rem;
+}
+span.profile-color {
+    color: #c2410c;
 }
 .project-work-main {
     max-width: 300px;
