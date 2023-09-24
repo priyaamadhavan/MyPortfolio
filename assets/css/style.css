@@ -66,20 +66,23 @@ a:hover {
     text-decoration: none;
 }
 .primary-color {
-    color: #1E5128;
+    color:#c2410c;
 }
 .bg-color {
     background-color: #191A19;
 }
 .nav-link {
-    color: #1E5128;
+    color: #c2410c;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 1px;
+    transition: transform 0.2s ease, opacity 0.2s ease, font-weight 0.5s ease; /* Adjust the font-weight transition duration as needed */
+    transition-delay: 0s;
 }
 .nav-link:hover {
-    color: #1E5128;
-    font-weight: 400;
+    color: #c2410c;
+    transform: translateX(1px);
+    opacity: 0.8;
 }
 .list-group{list-style-type: none;}
 .social-links {margin: auto;}
@@ -388,6 +391,7 @@ ul.footer-menu {
     padding-right: 0px;
     padding-bottom: 10px;
     height: 100%;
+    text-align: center;
 }
 .welcome-note {
     font-size: 1.5rem;
@@ -432,14 +436,17 @@ br{
     text-align: center;
 }
 .next-project{
-    color: #1E5128;
-    font-weight: 600;
+    color: #c2410c;
+    font-weight: 400;
     font-size: 22px;
     text-align: center;
+    transition: transform 0.2s ease, opacity 0.2s ease, font-weight 0.5s ease; /* Adjust the font-weight transition duration as needed */
+    transition-delay: 0s;
 }
 .next-project:hover {
-    color: #1E5128;
-    font-weight: 400;
+    color: #c2410c;
+    transform: translateX(1px);
+    opacity: 0.8;
 }
 .maybe-main {
     background: #48b8d0;
