@@ -576,6 +576,7 @@ br{
     .image-box01, .image-box02, .text-box {
         width: 100%;
         transform: none;
+        margin: 20px 0;
     }
     .about-hvtc {
         flex-direction: column;
