@@ -93,6 +93,7 @@ a:hover {
     flex-direction: column;
     text-align: center;
     align-items: flex-start;
+    justify-content: space-between;
 }
 .banner-section h1 {
     display: flex;
@@ -218,6 +219,8 @@ a:hover {
     object-fit: cover;
     max-width: 450px;
     height: 450px;
+    max-width: 260px;
+    object-fit: contain;
 }
 figcaption {
     text-align: right;
@@ -339,7 +342,7 @@ ul.footer-menu {
         background: #191A19;
 }
 .case-study h1 {
-    color: #fff;
+    color: #c2410b;
     font-size: 48px;
 }
 .project-head {
@@ -402,7 +405,7 @@ br{
     line-height: 32px;
 }
 .project-contribution li{
-    color: #fff;
+    color: #333;
     margin: 5px 0;
 }
 .next-project-link {
