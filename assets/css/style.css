@@ -34,11 +34,14 @@
     font-weight: 700;
     src: url(/assets/font/Inter-Bold.ttf);
 }
-body {font-family:'Inter', sans-serif;color: #fff;
+body {font-family:'Inter', sans-serif;color: #333;
     margin: 0;
     padding: 0;
     overflow: hidden;
     position: relative;
+}
+button:focus {
+    outline: transparent !important;
 }
 .body-bg {
     position: fixed;
@@ -50,13 +53,24 @@ body {font-family:'Inter', sans-serif;color: #fff;
     z-index: -1;
     opacity: 0.92;
 }
+.hero-bg {
+    background-image: url(../img/hero-2024.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.hero-dot {
+    position: absolute;
+    z-index: 0;
+    top: -12px;
+    right: -20px;
+}
 .body-content {
-position: relative;
+    position: relative;
   z-index: 1;
   overflow-y: scroll; /* Enable vertical scrolling for content */
   height: 100vh; /* Set the height of the content container to the viewport height */
   padding: 20px; /* Add padding as needed */
-  background: #f6f2ee;
+  background: #F5F3EF;
 }
 
 h1,h2,h3,h4,h5,h6,p,a {font-family:'Inter', sans-serif;}
@@ -67,13 +81,13 @@ a:hover {
     text-decoration: none;
 }
 .primary-color {
-    color:#c2410c;
+    color:#333;
 }
 .bg-color {
     background-color: #191A19;
 }
 .nav-link {
-    color: #c2410c;
+    color: #333;
     font-size: 18px;
     font-weight: 400;
     letter-spacing: 1px;
@@ -81,7 +95,7 @@ a:hover {
     transition-delay: 0s;
 }
 .nav-link:hover {
-    color: #c2410c;
+    color: #333;
     transform: translateX(1px);
     opacity: 0.8;
 }
@@ -89,10 +103,8 @@ a:hover {
 .social-links {margin: auto;}
 .banner-section{
     /* min-height: 500px; */
-    display: flex;
-    flex-direction: column;
     text-align: center;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
 }
 .banner-section h1 {
@@ -138,7 +150,7 @@ a:hover {
     padding: 12px 27px;
 }
 .heading-section {
-    max-width: 63%;
+    max-width: 50%;
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -146,6 +158,28 @@ a:hover {
 }
 .profile-section {
     position: relative;
+    max-width: 50%;
+}
+.mailme {
+    color: #78797a;
+    text-decoration: underline;
+}
+.mailme:hover {
+    color: #78797a;
+    text-decoration: underline;
+}
+.aboutme {
+    color: #333;
+    text-align: left;
+    padding-top: 22px;
+    font-size: 22px;
+    line-height: 32px;
+}
+.designquote {
+    color: #333;
+    text-align: left;
+    font-style: italic;
+    font-size: 18px;
 }
 /* .profile-section::before {
     content: "HI, I AM PRIYANGA MADHAVAN";
@@ -216,11 +250,11 @@ a:hover {
 }
 .profile-section img{
     width: 100%;
-    object-fit: cover;
-    max-width: 450px;
     height: 450px;
-    max-width: 260px;
+    max-width: 100%;
     object-fit: contain;
+    z-index: 1;
+    position: relative;
 }
 figcaption {
     text-align: right;
@@ -234,7 +268,7 @@ figcaption {
 }
 .service-title span {
     display: inline-block;
-    color:#c2410b ;
+    color:#333;
     padding-top: 10px;
     padding-right: 0px;
     padding-bottom: 10px;
@@ -254,15 +288,18 @@ figcaption {
 }
 .project-list__title {
     font-size: 18px;
-    color: #fff;
+    color: #333;
     font-weight: 500;
-    letter-spacing: 1px;
+    padding-left: 10px;
+}
+.project-list__dec {
+    padding-left: 10px;
 }
 .project-list__items {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    background: #0b0d14cf !important;
-    border-radius: 20px;
-    padding: 20px;
+    background: #DBE4E9 !important;
+    border-radius: 5px;
+    padding: 0px;
     margin: 10px;
 }
 .project-list__items img{
@@ -273,10 +310,6 @@ figcaption {
     object-fit: contain;
     min-height: 220px;
 }
-.img-fluid{ transition: transform .5s;}
-.img-fluid:hover{  -ms-transform: scale(1.05); /* IE 9 */
-    -webkit-transform: scale(1.05); /* Safari 3-8 */
-    transform: scale(1.05); }
 ul.social-icons {
     display: flex;
     gap: 25px;
@@ -285,7 +318,9 @@ ul.social-icons {
     justify-content: center;
 }
 .social-icons a {
-    color: #c2410b;
+    color: #333;
+    display: flex;
+    gap: 3px;
 }
 .social-icons i::before {
     font-size: 24px;
@@ -297,11 +332,12 @@ ul.footer-menu {
     align-items: center;
     justify-content: center;
     background: #333;
+    color: #fff;
     margin: 0;
     padding: 20px;
 }
 .footer-menu li a{
-    color: #c2410b;
+    color: #333;
 }
 .copyright {
     display: inline-block;
@@ -315,7 +351,7 @@ ul.footer-menu {
 }
 @media (min-width: 1200px) {
     .container {
-        max-width: 980px;
+        max-width: 1200px;
     }
 }
 @media (max-width:768px) {
@@ -397,7 +433,7 @@ br{
     margin: 30px;
 }
 .p-top-bottom {
-    padding:50px 0;
+    padding:100px 0 50px;
 }
 .project-text{
     color: #333;
@@ -412,7 +448,7 @@ br{
     text-align: center;
 }
 .next-project{
-    color: #c2410c;
+    color: #333;
     font-weight: 400;
     font-size: 22px;
     text-align: center;
@@ -420,7 +456,7 @@ br{
     transition-delay: 0s;
 }
 .next-project:hover {
-    color: #c2410c;
+    color: #333;
     transform: translateX(1px);
     opacity: 0.8;
 }
@@ -431,12 +467,27 @@ br{
     .banner-section {
         flex-direction: column !important;
     }
+    .p-top-bottom {
+        padding:50px 0 0;
+    }
     .heading-section {
         max-width: 100%;
         padding: 25px 15px;
+        align-items: center;
+    }
+    .banner-section h1 {
+        align-items: center;
+        text-align: center;
     }
     ul.footer-menu {
         flex-direction: column;
+    }
+    .hero-dot {
+        display: none;
+    }
+    .profile-section {
+        max-width: 100%;
+        padding: 20px;
     }
 }
 
@@ -480,7 +531,7 @@ br{
     border-radius: 20px;
     position: relative;
     padding: 18px;
-    background: #191a19;
+    background: #f9f9f9;
     z-index: 9;
 }
 .text-box::after {
@@ -582,10 +633,10 @@ br{
     font-weight: 400;
     font-size: 3rem;
     line-height: 64px;
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
 .footer-bg {
-    background-color: #f8f8f8;
+    background-color: #fcf9f4;
 }
 .footer-main {
     padding-top: 20px;
@@ -595,8 +646,8 @@ br{
     padding: 20px;
 }
 .about-title {
-    color: #c2410c !important;
-    margin: 16px !important;
+    color: #333 !important;
+    margin: 0px !important;
 }
 .about-me {
     font-weight: 300;
