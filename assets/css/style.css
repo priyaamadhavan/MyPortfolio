@@ -526,7 +526,12 @@ br{
         padding: 20px;
     }
 }
-
+.hyperurl {
+    background-color: #B3D0C9;
+}
+.hyperurl .case-study-items {
+    background-color: #B3D0C9;
+}
 /* project hvtc styling */
 .hvtc-main {
     background-color: #3E2E00;
