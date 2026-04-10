@@ -1,278 +1,893 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priyanga Madhavan - Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Priyanga M — Product Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f4f5ef;
+      --bg-dark: #1a1a18;
+      --green: #7ab648;
+      --green-bright: #9fd94e;
+      --green-card: #c8e86a;
+      --text: #111110;
+      --muted: #666660;
+      --white: #ffffff;
+      --card-bg: #eceee7;
+      --border: #d8dbd0;
+      --tag-bg: #e2e5d8;
+      --font-display: 'Playfair Display', serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .nav-links a.active {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .btn-resume {
+      background: var(--green);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-resume:hover {
+      background: #68a03a;
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 40px;
+      padding: 60px 60px 40px;
+      align-items: start;
+    }
+
+    .hero-left { max-width: 560px; }
+
+    .hero-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .hero-email::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      display: inline-block;
+    }
+
+    .hero-email:hover { background: var(--border); }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 6vw, 72px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title .accent { color: var(--green); }
+
+    .hero-desc {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 420px;
+      line-height: 1.7;
+    }
+
+    .hero-desc strong { color: var(--text); font-weight: 600; }
+
+    /* Hero Right Card */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .hero-photo-wrapper {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #c9cec2;
+      height: 300px;
+    }
+
+    .hero-photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      filter: grayscale(20%);
+    }
+
+    .hero-photo-badge {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%);
+      padding: 20px 18px 18px;
+    }
+
+    .hero-photo-badge .badge-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--green-bright);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .hero-photo-badge .badge-text {
+      font-family: var(--font-display);
+      font-size: 16px;
+      color: var(--white);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .hero-photo-badge .badge-text span { color: var(--green-bright); }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 28px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .section-header p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .view-all {
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 1px;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .view-all:hover { color: var(--green); border-color: var(--green); }
+
+    /* ── SELECTED WORKS ── */
+    .works-section {
+      padding: 60px 60px;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .work-card {
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--card-bg);
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    }
+
+    .work-card-img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Placeholder images using CSS gradients */
+    .work-card-img-placeholder {
+      width: 100%;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .work-card-img-placeholder.hotel {
+      background: linear-gradient(135deg, #2c2a22 0%, #3d3828 50%, #1a1814 100%);
+    }
+
+    .work-card-img-placeholder.saas {
+      background: linear-gradient(135deg, #d0d8c8 0%, #e8ecdf 50%, #c4ceba 100%);
+    }
+
+    .work-card-body {
+      padding: 18px 20px 20px;
+    }
+
+    .work-tags {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: rgba(255,255,255,0.18);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .tag.dark {
+      background: rgba(0,0,0,0.07);
+      color: var(--text);
+      border-color: rgba(0,0,0,0.12);
+    }
+
+    .work-card-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+    }
+
+    .work-card-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .work-card-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+
+    /* ── CURRENT ORBIT ── */
+    .orbit-section {
+      padding: 60px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .orbit-image {
+      border-radius: 18px;
+      overflow: hidden;
+      height: 340px;
+      background: #2a2a28;
+    }
+
+    .orbit-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Laptop placeholder */
+    .orbit-image-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1e1e1c 0%, #2e2e2a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .orbit-content .orbit-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .orbit-content h2 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .orbit-content p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .orbit-content p strong {
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .read-article {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--text);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .read-article:hover { color: var(--green); border-color: var(--green); }
+
+    /* ── MODERN STACK ── */
+    .stack-section {
+      padding: 60px 60px;
+      text-align: center;
+    }
+
+    .stack-section h2 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .stack-section .sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .stack-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: left;
+      transition: transform 0.2s;
+    }
+
+    .stack-card:hover { transform: translateY(-3px); }
+
+    .stack-card.highlight {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .stack-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(0,0,0,0.08);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .stack-card.highlight .stack-icon {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .stack-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .stack-card p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .stack-card.highlight p { color: rgba(255,255,255,0.8); }
+
+    .tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .tool-tag {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      transition: background 0.2s, transform 0.2s;
+      cursor: default;
+    }
+
+    .tool-tag:hover {
+      background: var(--green);
+      color: var(--white);
+      border-color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    /* ── PROFESSIONAL TRAJECTORY ── */
+    .traj-section {
+      padding: 60px 60px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .traj-left .traj-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+
+    .traj-left h2 {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .traj-left p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .traj-right { display: flex; flex-direction: column; gap: 0; }
+
+    .traj-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .traj-item:first-child { padding-top: 0; }
+
+    .traj-role {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .traj-company {
+      font-size: 13px;
+      color: var(--green);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .traj-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .traj-date {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-dark);
+      color: rgba(255,255,255,0.6);
+      padding: 30px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--green-bright); }
+
+    /* ── SVG ICONS ── */
+    .icon-laptop {
+      width: 120px;
+      opacity: 0.3;
+    }
+
+    .icon-folder {
+      font-size: 80px;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-left > * {
+      animation: fadeUp 0.6s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+    .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+
+    .hero-right {
+      animation: fadeUp 0.6s ease 0.4s forwards;
+      opacity: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .hero { grid-template-columns: 1fr; padding: 40px 24px 30px; }
+      .hero-right { display: none; }
+      .works-section, .orbit-section, .stack-section, .traj-section { padding: 40px 24px; }
+      .works-grid { grid-template-columns: 1fr; }
+      .orbit-section { grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: repeat(2, 1fr); }
+      .traj-section { grid-template-columns: 1fr; gap: 32px; }
+      footer { flex-direction: column; gap: 20px; text-align: center; padding: 30px 24px; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <section class="">
-    <nav class="container navbar fixed-top navbar-expand-lg nav-bg">
-      <a class="navbar-brand logo-img" href="./index.html"><img src="./assets/img/logo-2024.svg" alt=""></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"><img src="./assets/img/hamburger.svg" alt=""></span>
-      </button>
-      <div class="collapse justify-content-end navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav nav-fill w-50">
-          <li class="nav-item active">
-            <a class="nav-link" href="./index.html">Work <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" target="_blank" href="./assets/resume/PriyangaMadhavan-Resume.pdf">Resume</a>
-          </li>
-        </ul>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Priyanga M</a>
+    <ul class="nav-links">
+      <li><a href="#works" class="active">Work ▾</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#resume" class="btn-resume">Resume</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <a href="mailto:priyanmadhavan11@gmail.com" class="hero-email">priyanmadhavan11@gmail.com</a>
+      <h1 class="hero-title">
+        Hi, I'm <span class="accent">Priyanga</span><br>
+        Product Designer.
+      </h1>
+      <p class="hero-desc">
+        Senior Product Designer with 6+ Years of Experience crafting
+        <strong>complex SaaS products</strong> and human-centered strategic solutions.
+      </p>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo-wrapper">
+        <!-- Replace src with actual photo -->
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Priyanga M" />
+        <div class="hero-photo-badge">
+          <div class="badge-label">Based in Chennai</div>
+          <div class="badge-text">Focusing on <span>AI-assisted</span><br>Design &amp; Product Thinking</div>
+        </div>
       </div>
-    </nav>
+    </div>
   </section>
-  <!-- banner section -->
-  <!-- <div class="body-bg"></div> -->
-  <div class="body-content p-0">
-    <section class="container p-top-bottom hero-bg">
-          <div class="banner-section p-top-bottom d-flex flex-row">
-            <div class="heading-section">
-              <h1 class="role-sec about-title">Hey there &#128075;</h1>
-              <h1 class="role-sec">I'm Priyanga Madhavan.</h1>
-              <a class="mailme" href="#">priyamadhavan11@gmail.com</a>
-              <p class="aboutme"> To leverage my expertise in UI/UX design to create engaging, stakeholder-informed experiences from project inception, 
-                I excel at defining problem statements through comprehensive research and crafting creative objectives that harmonize business goals with user needs. 
-                This approach ensures holistic success in meeting project objectives.
-                <br> 
-                Let's collaborate and bring your vision to life!"</p>
-              <q class="designquote">Having the best product means nothing if the people won't buy it.</q>
-                - Donald A. Norman
-            </div>
-            <div class="profile-section">
-              <img src="./assets/img/Profile-2024.svg">
-              <div class="hero-dot"><img src="./assets/img/hero-dot.svg" alt=""></div>
-              
-            </div>
-          </div>
-    </section>
-    <!-- my bio section -->
-    <section class="container p-0">
-      <div class="service-title inline">
-        <!-- <img src="./assets/img/partical-bg.jpg" alt=""> -->
-        <span >Case Study</span>
+
+  <!-- SELECTED WORKS -->
+  <section class="works-section" id="works">
+    <div class="section-header">
+      <div>
+        <h2>Selected Works</h2>
+        <p>Solving high-density problems through simple UI.</p>
       </div>
-      <br>
-      <div class="home-case-study hyperurl">
-        <div class="row m-0">
-          <div class="col-lg-7 col-md-5 col-sm-5 p-0">
-            <div class="case-study-items">
-              <h1>Organise & Share, your URLs, Effortlessly</h1>
-              <p>Streamline your URLs from across the internet and experience the convenience of effortless link management.</p>
-                <button><a href="https://www.behance.net/gallery/199504073/Organise-Share-your-URLs-Effortlessly" target="_blank">
-                  Read Case Study</a></button>
-            </div>
+      <a href="#" class="view-all">View All Projects →</a>
+    </div>
+    <div class="works-grid">
+
+      <!-- Card 1 -->
+      <div class="work-card">
+        <div class="work-card-img-placeholder hotel">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="30" width="60" height="40" rx="4" fill="rgba(255,255,255,0.06)"/>
+            <rect x="20" y="20" width="40" height="10" rx="2" fill="rgba(255,255,255,0.1)"/>
+            <circle cx="40" cy="15" r="8" fill="rgba(200,180,100,0.3)"/>
+          </svg>
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-tags">
+            <span class="tag">Hospitality</span>
+            <span class="tag">Cashback Booking</span>
           </div>
-          <div class="col-lg-5 col-md-5 col-sm-5 p-0">
-            <div class="project-list__items m-0">
-              <img width="100%" class="img-fluid img-thumbnail" src="assets/img/hyperurl.png" alt="Novant Health">
-            </div>
-          </div>
+          <div class="work-card-title">Luxury Hotel Booking</div>
+          <div class="work-card-desc">A cashback-focused booking platform built to enhance discovery and drive higher conversions.</div>
         </div>
       </div>
-      <br>
-      <div class="home-case-study">
-        <div class="row m-0">
-          <div class="col-lg-7 col-md-5 col-sm-5 p-0">
-            <div class="case-study-items">
-              <h1>Empowering Healthcare Administration</h1>
-              <p>This case study details the creation of a cutting-edge admin dashboard for healthcare administrators. 
-                Through user-centered design and collaboration, we address challenges in content management, user group customization, and layout configuration.</p>
-                <button><a href="https://mangosqueeze.notion.site/Enhancing-User-Engagement-and-Productivity-through-Admin-Management-Dashboard-Features-484505dfd02141b19762d326f3246cf5" target="_blank">
-                  Read Case Study</a></button>
-            </div>
+
+      <!-- Card 2 -->
+      <div class="work-card">
+        <div class="work-card-img-placeholder saas">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="20" width="30" height="36" rx="4" fill="rgba(120,160,60,0.4)"/>
+            <rect x="42" y="28" width="30" height="28" rx="4" fill="rgba(120,160,60,0.3)"/>
+            <rect x="20" y="10" width="20" height="12" rx="2" fill="rgba(120,160,60,0.5)"/>
+          </svg>
+        </div>
+        <div class="work-card-overlay">
+          <div class="work-tags">
+            <span class="tag">SaaS</span>
+            <span class="tag">Link Management</span>
           </div>
-          <div class="col-lg-5 col-md-5 col-sm-5 p-0">
-            <div class="project-list__items m-0">
-              <img width="100%" class="img-fluid img-thumbnail" src="assets/img/novant/novant-health.png" alt="Novant Health">
-            </div>
-          </div>
+          <div class="work-card-title">Digital Bookmark SaaS</div>
+          <div class="work-card-desc">Create branded links, track clicks, and measure campaign performance in one platform.</div>
         </div>
       </div>
-      <br>  
-      <div class="service-title inline">
-        <!-- <img src="./assets/img/partical-bg.jpg" alt=""> -->
-        <span >Explore other Projects</span>
+
+    </div>
+  </section>
+
+  <!-- CURRENT ORBIT -->
+  <section class="orbit-section" id="about">
+    <div class="orbit-image">
+      <div class="orbit-image-placeholder">
+        <svg class="icon-laptop" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="10" width="160" height="90" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+          <rect x="30" y="20" width="140" height="70" rx="4" fill="rgba(255,255,255,0.04)"/>
+          <rect x="0" y="100" width="200" height="10" rx="5" fill="rgba(255,255,255,0.06)"/>
+          <rect x="40" y="35" width="60" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+          <rect x="40" y="48" width="100" height="4" rx="2" fill="rgba(255,255,255,0.08)"/>
+          <rect x="40" y="58" width="80" height="4" rx="2" fill="rgba(255,255,255,0.06)"/>
+        </svg>
       </div>
-      <br>
-      <div class="project-list mt-2">
-        <div class="row m-0">
-          <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-            <div class="project-list__items">
-              <a href="./hvtc.html" target="_blank">
-                <img width="100%" class="img-fluid img-thumbnail" src="assets/img/hvtc.png" alt="Textile Web">
-              </a>
-              <div class="project-list__title mt-3">Textile Product - Landing page</div>
-              <div class="project-list__dec d-flex">
-                <span class="project-list__dec-items p-1 my-2">UI/UX Design</span>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-            <div class="project-list__items">
-              <a href="maybetech.html" target="_blank">
-                <img width="100%" class="img-fluid img-thumbnail" src="assets/img/maybetech/content-calendar.png" alt="Content Calendar">
-              </a>
-              <div class="project-list__title mt-3">Maybetech - Digital Marketing</div>
-              <div class="project-list__dec d-flex">
-                <span class="project-list__dec-items p-1 my-2">Product Design</span>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-            <div class="project-list__items">
-              <a href="qa-touch.html" target="_blank">
-                <img width="100%" class="img-fluid img-thumbnail" src="assets/img/qa-touch/QA-touch.png" alt="QA Touch">
-              </a>
-              <div class="project-list__title mt-3">QA Touch - SaaS</div>
-              <div class="project-list__dec d-flex">
-                <span class="project-list__dec-items p-1 my-2">Product Design</span>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-            <div class="project-list__items">
-              <a href="https://live.info-tech.com.hk/" target="_blank">
-                <img width="100%" class="img-fluid img-thumbnail" src="assets/img/hrms.svg" alt="evaluate app"></a>
-              <div class="project-list__title mt-3">HRMS Product - SaaS</div>
-                <div class="project-list__dec d-flex">
-                  <span class="project-list__dec-items p-1 my-2">Product Design</span>
-                </div>
-            </div>
-          </div>
-          <br>
-          <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-            <div class="project-list__items">
-              <a href="https://getevaluate.app/" target="_blank">
-                <img width="100%" class="img-fluid img-thumbnail" src="assets/img/getevaluate.png" alt="evaluate app"></a>
-              <div class="project-list__title mt-3">Evaluate - SaaS</div>
-                <div class="project-list__dec d-flex">
-                  <span class="project-list__dec-items p-1 my-2">UI/UX Design</span>
-                </div>
-            </div>
-          </div>
-          <br>
-          <div class="col-lg- col-md-4 col-sm-12 p-0">
-            <div class="project-list__items">
-              <a href="https://laravelchennai.in/" target="_blank">
-              <img width="100%" class="img-fluid img-thumbnail" src="assets/img/chennai-community.png" alt="chennai community">
-              </a>
-              <div class="project-list__title mt-3">Laravel - landing page</div>
-              <div class="project-list__dec d-flex">
-                <span class="project-list__dec-items p-1 my-2">UI Design</span>
-              </div>
-            </div>
-          </div>
-          <br>
-          <!-- <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-            <div class="project-list__items">
-              <a href="https://www.figma.com/file/uhMYiOvSBLhRs5YZauHAUt/Onboarding-Form-Design?node-id=2%3A24" target="_blank">
-              <img width="100%" class="img-fluid img-thumbnail" src="assets/img/onboardform.jpg" alt="form">
-            </a>
-              <div class="project-list__title mt-3">On Board Form Design</div>
-                <div class="project-list__dec d-flex">
-                  <span class="project-list__dec-items p-1 my-2">F</span>
-                </div>
-            </div>
-          </div>
-          <br> -->
-          <div class="col-lg-4 col-md-4 col-sm-12 p-0">
-            <div class="project-list__items">
-              <a href="https://www.figma.com/file/HNYdM2VuTr8N8r7MujcJTz/meetup-banner?node-id=105%3A99" target="_blank">
-              <img width="100%" class="img-fluid img-thumbnail" src="assets/img/banner.png" alt="banners">
-              </a>
-              <div class="project-list__title mt-3">For Community</div>
-                <div class="project-list__dec d-flex">
-                  <span class="project-list__dec-items p-1 my-2">FIGMA</span>
-                </div>
-            </div>
-          </div>
+    </div>
+    <div class="orbit-content">
+      <div class="orbit-label">Current Orbit</div>
+      <h2>Brand Strategist at<br>Maak</h2>
+      <p>
+        I currently bridge the gap between creative execution and business
+        strategy at Maak, where we build tech-forward identities for the next
+        generation of AI startups.
+      </p>
+      <p>
+        My work extends beyond the screen — I'm an active <strong>LinkedIn thought leader</strong>,
+        sharing insights on UX research, the ethical implementation of AI, and
+        product strategy to a community of 5k+ professionals.
+      </p>
+      <a href="#" class="read-article">Read Article →</a>
+    </div>
+  </section>
+
+  <!-- THE MODERN STACK -->
+  <section class="stack-section">
+    <h2>The Modern Stack</h2>
+    <p class="sub">Merging traditional research with futuristic AI workflows.</p>
+
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="stack-icon">🔍</div>
+        <h3>UX Research</h3>
+        <p>Competitor Analysis, Problem Framing and Requirement Breakdown.</p>
+      </div>
+      <div class="stack-card highlight">
+        <div class="stack-icon">✦</div>
+        <h3>AI Workflow</h3>
+        <p>ChatGPT, Claude, Stitch, and Figma AI for generating Design Variants.</p>
+      </div>
+      <div class="stack-card">
+        <div class="stack-icon">📈</div>
+        <h3>Product Strategy</h3>
+        <p>UX Strategy, Design Principles, and Product Thinking.</p>
+      </div>
+      <div class="stack-card">
+        <div class="stack-icon">💻</div>
+        <h3>Frontend Dev</h3>
+        <p>Tailwind CSS and SaaS Products.</p>
+      </div>
+    </div>
+
+    <div class="tool-tags">
+      <span class="tool-tag">Figma</span>
+      <span class="tool-tag">fig.jam</span>
+      <span class="tool-tag">Prototyping</span>
+      <span class="tool-tag">Wireframing</span>
+      <span class="tool-tag">Design Systems</span>
+      <span class="tool-tag">Product Thinking</span>
+      <span class="tool-tag">Canvas</span>
+    </div>
+  </section>
+
+  <!-- PROFESSIONAL TRAJECTORY -->
+  <section class="traj-section">
+    <div class="traj-left">
+      <div class="traj-label">The Journey</div>
+      <h2>Professional<br>Trajectory</h2>
+      <p>
+        Combining strategic brand thinking with meticulous UI execution across fintech,
+        healthcare, and enterprise software.
+      </p>
+    </div>
+    <div class="traj-right">
+
+      <div class="traj-item">
+        <div>
+          <div class="traj-role">UI/UX Designer</div>
+          <div class="traj-company">Freelance</div>
+          <div class="traj-desc">Collaborating with startups to define product-market fit through design-led growth.</div>
         </div>
+        <div class="traj-date">2023 – Present</div>
       </div>
-    </section>
-    <footer id="contact" class="container p-0 footer-bg">
-      <div class="footer-main">
-        <a class="logo-img text-center d-flex justify-content-center" href="./index.html"><img src="./assets/img/logo.svg" alt=""></a>
-        <div class="d-flex align-items-center flex-column">
-          <ul class="w-100 d-flex flex-row justify-content-center m-0 p-20">
-            <li class="nav-item">
-              <a class="nav-link" href="./index.html">Work <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" target="_blank" href="./assets/resume/PriyangaMadhavan-Resume.pdf">Resume</a>
-            </li>
-          </ul>
+
+      <div class="traj-item">
+        <div>
+          <div class="traj-role">Senior UX/UI Designer</div>
+          <div class="traj-company">BCG Global Services</div>
+          <div class="traj-desc">Led design initiatives for global clients, fostering a culture of user-centricity and rapid prototyping.</div>
         </div>
-        <ul class="social-icons d-flex flex-row">
-          <li><a href="https://www.linkedin.com/in/priya-madhavan/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,256,256">
-            <g fill-opacity="0.61176" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(9.84615,9.84615)"><path d="M21.125,0h-16.25c-2.69141,0 -4.875,2.18359 -4.875,4.875v16.25c0,2.69141 2.18359,4.875 4.875,4.875h16.25c2.69141,0 4.875,-2.18359 4.875,-4.875v-16.25c0,-2.69141 -2.18359,-4.875 -4.875,-4.875zM8.03906,22.07031h-4.03906l-0.02344,-12.09375h4.03906zM5.91797,8.39453h-0.02344c-1.32031,0 -2.17187,-0.91016 -2.17187,-2.04297c0,-1.16016 0.87891,-2.03906 2.22266,-2.03906c1.34375,0 2.16797,0.87891 2.19531,2.03906c0,1.13281 -0.85547,2.04297 -2.22266,2.04297zM22.04297,22.07031h-4.07422v-6.57031c0,-1.58984 -0.42187,-2.67187 -1.84375,-2.67187c-1.08594,0 -1.67187,0.73047 -1.95312,1.4375c-0.10547,0.25391 -0.13281,0.60156 -0.13281,0.95703v6.84766h-4.09375l-0.02344,-12.09375h4.09375l0.02344,1.70703c0.52344,-0.80859 1.39453,-1.95312 3.48047,-1.95312c2.58594,0 4.51953,1.6875 4.51953,5.31641v7.02344z"></path></g></g>
-            </svg><span>LinkedIn</span></a></li>
-          <li><a href="https://twitter.com/priyaaamadhavan" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,256,256">
-            <g fill-opacity="0.61176" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M11,4c-3.866,0 -7,3.134 -7,7v28c0,3.866 3.134,7 7,7h28c3.866,0 7,-3.134 7,-7v-28c0,-3.866 -3.134,-7 -7,-7zM13.08594,13h7.9375l5.63672,8.00977l6.83984,-8.00977h2.5l-8.21094,9.61328l10.125,14.38672h-7.93555l-6.54102,-9.29297l-7.9375,9.29297h-2.5l9.30859,-10.89648zM16.91406,15l14.10742,20h3.06445l-14.10742,-20z"></path></g></g>
-            </svg><span>X</span></a></li>
-          <li><a href="https://github.com/priyaamadhavan" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,256,256">
-            <g fill-opacity="0.61176" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M17.791,46.836c0.711,-0.306 1.209,-1.013 1.209,-1.836v-5.4c0,-0.197 0.016,-0.402 0.041,-0.61c-0.014,0.004 -0.027,0.007 -0.041,0.01c0,0 -3,0 -3.6,0c-1.5,0 -2.8,-0.6 -3.4,-1.8c-0.7,-1.3 -1,-3.5 -2.8,-4.7c-0.3,-0.2 -0.1,-0.5 0.5,-0.5c0.6,0.1 1.9,0.9 2.7,2c0.9,1.1 1.8,2 3.4,2c2.487,0 3.82,-0.125 4.622,-0.555c0.934,-1.389 2.227,-2.445 3.578,-2.445v-0.025c-5.668,-0.182 -9.289,-2.066 -10.975,-4.975c-3.665,0.042 -6.856,0.405 -8.677,0.707c-0.058,-0.327 -0.108,-0.656 -0.151,-0.987c1.797,-0.296 4.843,-0.647 8.345,-0.714c-0.112,-0.276 -0.209,-0.559 -0.291,-0.849c-3.511,-0.178 -6.541,-0.039 -8.187,0.097c-0.02,-0.332 -0.047,-0.663 -0.051,-0.999c1.649,-0.135 4.597,-0.27 8.018,-0.111c-0.079,-0.5 -0.13,-1.011 -0.13,-1.543c0,-1.7 0.6,-3.5 1.7,-5c-0.5,-1.7 -1.2,-5.3 0.2,-6.6c2.7,0 4.6,1.3 5.5,2.1c1.699,-0.701 3.599,-1.101 5.699,-1.101c2.1,0 4,0.4 5.6,1.1c0.9,-0.8 2.8,-2.1 5.5,-2.1c1.5,1.4 0.7,5 0.2,6.6c1.1,1.5 1.7,3.2 1.6,5c0,0.484 -0.045,0.951 -0.11,1.409c3.499,-0.172 6.527,-0.034 8.204,0.102c-0.002,0.337 -0.033,0.666 -0.051,0.999c-1.671,-0.138 -4.775,-0.28 -8.359,-0.089c-0.089,0.336 -0.197,0.663 -0.325,0.98c3.546,0.046 6.665,0.389 8.548,0.689c-0.043,0.332 -0.093,0.661 -0.151,0.987c-1.912,-0.306 -5.171,-0.664 -8.879,-0.682c-1.665,2.878 -5.22,4.755 -10.777,4.974v0.031c2.6,0 5,3.9 5,6.6v5.4c0,0.823 0.498,1.53 1.209,1.836c9.161,-3.032 15.791,-11.672 15.791,-21.836c0,-12.682 -10.317,-23 -23,-23c-12.683,0 -23,10.318 -23,23c0,10.164 6.63,18.804 15.791,21.836z"></path></g></g>
-            </svg><span>Github</span></a></li>
-        </ul>
-        <ul class="footer-menu">
-          <li><a>priyamadhavan11@gmail.com</a></li>
-          <li><a>+91-9092092897</a></li>
-        </ul>
+        <div class="traj-date">2022 – 2023</div>
       </div>
-    </footer>
-</div>
 
+      <div class="traj-item">
+        <div>
+          <div class="traj-role">UX/UI Developer</div>
+          <div class="traj-company">Majalah Infotech</div>
+          <div class="traj-desc">Bridging the gap between creative vision and technical implementation using modern web stacks.</div>
+        </div>
+        <div class="traj-date">2021 – 2022</div>
+      </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const textElement = document.querySelector(".changing-text");
-  const texts = ["a UI/UX Designer", "a Product Designer", "a Web Designer"]; // Add more texts as needed
-  const animationDuration = 1000; // Animation duration for text change in milliseconds
-  const delayBetweenTransitions = 1500; // Delay between text transitions in milliseconds
-  let currentIndex = 0;
+      <div class="traj-item">
+        <div>
+          <div class="traj-role">UX/UI Developer</div>
+          <div class="traj-company">Majalah Infotech</div>
+          <div class="traj-desc">Bridging the gap between creative vision and technical implementation using modern web stacks.</div>
+        </div>
+        <div class="traj-date">2021 – 2022</div>
+      </div>
 
-  function changeText() {
-    textElement.style.opacity = 0;
-    setTimeout(function() {
-      textElement.textContent = texts[currentIndex];
-      textElement.style.opacity = 1;
-      currentIndex = (currentIndex + 1) % texts.length;
-    }, animationDuration);
-  }
+      <div class="traj-item">
+        <div>
+          <div class="traj-role">UX/UI Developer</div>
+          <div class="traj-company">Majalah Infotech</div>
+          <div class="traj-desc">Bridging the gap between creative vision and technical implementation using modern web stacks.</div>
+        </div>
+        <div class="traj-date">2021 – 2022</div>
+      </div>
 
-  // Initial text display
-  textElement.textContent = texts[currentIndex];
-  currentIndex = (currentIndex + 1) % texts.length;
+    </div>
+  </section>
 
-  // Start the text loop
-  setInterval(changeText, animationDuration + delayBetweenTransitions);
-});
-
-
-</script>
-
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-logo">Priyanga M</div>
+      <div class="footer-copy">© 2025 All rights reserved. Made with intention.</div>
+    </div>
+    <div class="footer-links">
+      <a href="#">LinkedIn</a>
+      <a href="#">Twitter</a>
+      <a href="#">Email</a>
+    </div>
+  </footer>
 
 </body>
 </html>
