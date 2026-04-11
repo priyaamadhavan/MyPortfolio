@@ -11,8 +11,8 @@
     :root {
       --bg: #f4f5ef;
       --bg-dark: #1a1a18;
-      --green: #7ab648;
-      --green-bright: #9fd94e;
+      --green: #416600;
+      --green-bright: #ACF63C;
       --green-card: #c8e86a;
       --text: #111110;
       --muted: #666660;
@@ -302,6 +302,10 @@
       padding: 4px 10px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.25);
+    }
+    .tag.special {
+      background: var(--green-bright);
+      color: var(--text);
     }
 
     .tag.dark {
@@ -716,7 +720,7 @@
         </div>
         <div class="work-card-overlay">
           <div class="work-tags">
-            <span class="tag">Hospitality</span>
+            <span class="tag special">Hospitality</span>
             <span class="tag">Cashback Booking</span>
           </div>
           <div class="work-card-title">Luxury Hotel Booking</div>
@@ -735,7 +739,7 @@
         </div>
         <div class="work-card-overlay">
           <div class="work-tags">
-            <span class="tag">SaaS</span>
+            <span class="tag special">SaaS</span>
             <span class="tag">Link Management</span>
           </div>
           <div class="work-card-title">Digital Bookmark SaaS</div>
