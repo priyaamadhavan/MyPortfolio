@@ -1,129 +1,845 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priyanga Madhavan - Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Me</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    /* ─── Reset & Variables ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg:         #f0f2ec;
+      --white:      #ffffff;
+      --black:      #0a0a0a;
+      --green:      #8ab84a;
+      --green-dark: #6a9c2a;
+      --gray-light: #e4e8de;
+      --gray-mid:   #b0b8a4;
+      --gray-text:  #555f4a;
+      --tag-bg:     #e2e8d8;
+      --border:     #d4dac8;
+      --font-head:  'Syne', sans-serif;
+      --font-body:  'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Shared Layout ─────────────────────────────────── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ─── Section Label (ABOUT ME) ──────────────────────── */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      margin-bottom: 20px;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════════════ */
+    .hero {
+      padding: 72px 0 56px;
+    }
+
+    .hero__label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      margin-bottom: 22px;
+    }
+
+    .hero__heading {
+      font-family: var(--font-head);
+      font-size: clamp(38px, 6vw, 58px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      max-width: 640px;
+    }
+
+    .hero__heading .accent {
+      color: var(--green);
+    }
+
+    /* ─── Services + Bio Row ────────────────────────────── */
+    .hero__row {
+      display: grid;
+      grid-template-columns: 200px 1fr 200px;
+      gap: 0 48px;
+      margin-top: 56px;
+      align-items: start;
+    }
+
+    .hero__services {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    .service-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .service-icon svg {
+      width: 13px;
+      height: 13px;
+      color: var(--green);
+    }
+
+    .hero__bio {
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    .hero__bio p {
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: var(--black);
+    }
+
+    .hero__bio .highlight {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .hero__bio .underline-deco {
+      text-decoration: underline;
+      text-decoration-style: solid;
+      text-decoration-color: var(--black);
+      font-weight: 700;
+    }
+
+    .hero__deliverables {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-end;
+    }
+
+    .deliverable-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    .deliverable-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .deliverable-icon svg {
+      width: 13px;
+      height: 13px;
+      color: var(--green);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       JOURNEY SECTION
+    ═══════════════════════════════════════════════════════ */
+    .journey {
+      padding: 80px 0 64px;
+    }
+
+    .journey__heading {
+      font-family: var(--font-head);
+      font-size: clamp(24px, 4vw, 34px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 60px;
+    }
+
+    .journey__item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0 48px;
+      margin-bottom: 64px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .journey__item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .journey__label {
+      padding-top: 4px;
+    }
+
+    .journey__num {
+      font-family: var(--font-head);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1;
+    }
+
+    .journey__num span {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      display: block;
+      margin-top: 6px;
+    }
+
+    .journey__content {}
+
+    .journey__content p {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .journey__content .bold {
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .journey__tags-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .journey__tag-group {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .journey__tag-group .tag-title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-text);
+      margin-bottom: 6px;
+    }
+
+    .journey__tag-group .tag-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--black);
+      line-height: 1.5;
+    }
+
+    .tags-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       ALGORITHMIC DESIGN SECTION
+    ═══════════════════════════════════════════════════════ */
+    .algo {
+      padding: 80px 0 64px;
+      border-top: 1px solid var(--border);
+    }
+
+    .algo__heading {
+      font-family: var(--font-head);
+      font-size: clamp(24px, 4vw, 34px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .algo__sub {
+      font-size: 13px;
+      color: var(--gray-text);
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+
+    .algo__cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .algo__card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      position: relative;
+    }
+
+    .algo__card-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--tag-bg);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .algo__card-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--green-dark);
+    }
+
+    .algo__card-num {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      font-family: var(--font-head);
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--gray-light);
+      line-height: 1;
+    }
+
+    .algo__card h3 {
+      font-family: var(--font-head);
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .algo__card p {
+      font-size: 13px;
+      color: var(--gray-text);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .algo__card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .algo__card-list li {
+      font-size: 13px;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .algo__card-list li::before {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: var(--tag-bg);
+      border-radius: 50%;
+      flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238ab84a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-size: 10px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       PROJECTS SECTION
+    ═══════════════════════════════════════════════════════ */
+    .projects {
+      padding: 80px 0 64px;
+      border-top: 1px solid var(--border);
+    }
+
+    .projects__heading {
+      font-family: var(--font-head);
+      font-size: clamp(24px, 4vw, 34px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 36px;
+    }
+
+    .projects__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .project-card__thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--gray-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card__thumb .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(28px);
+      opacity: 0.7;
+    }
+
+    /* QA Touch — green blob */
+    .project-card:nth-child(1) .blob {
+      width: 80px; height: 80px;
+      background: var(--green);
+      top: 30%; left: 20%;
+    }
+
+    /* Novant — light green blob */
+    .project-card:nth-child(2) .blob {
+      width: 80px; height: 80px;
+      background: #b8d878;
+      top: 35%; left: 28%;
+    }
+
+    /* Digital Art — gray/beige blob */
+    .project-card:nth-child(3) .blob {
+      width: 80px; height: 80px;
+      background: #ccc9be;
+      top: 30%; left: 25%;
+    }
+
+    .project-card__body {
+      padding: 18px 20px 20px;
+    }
+
+    .project-card__title {
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .project-card__desc {
+      font-size: 12px;
+      color: var(--gray-text);
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .project-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .project-card__tags .tag {
+      font-size: 10.5px;
+      padding: 3px 10px;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════════ */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer__copy {
+      font-size: 12px;
+      color: var(--gray-text);
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer__links a {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer__links a:hover {
+      color: var(--green);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════ */
+    @media (max-width: 720px) {
+      .container { padding: 0 20px; }
+
+      .hero__row {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .hero__deliverables { align-items: flex-start; }
+
+      .journey__item {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .algo__cards {
+        grid-template-columns: 1fr;
+      }
+
+      .projects__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .journey__tags-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <section class="">
-      <nav class="container navbar fixed-top navbar-expand-lg nav-bg">
-        <a class="navbar-brand logo-img" href="./index.html"><img src="./assets/img/logo-2024.svg" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"><img src="./assets/img/hamburger.svg" alt=""></span>
-        </button>
-        <div class="collapse justify-content-end navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav nav-fill w-50">
-            <li class="nav-item active">
-              <a class="nav-link" href="./index.html">Work <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" target="_blank" href="./assets/resume/PriyangaMadhavan-Resume.pdf">Resume</a>
-            </li>
+
+  <!-- ════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero__label">About Me</p>
+      <h1 class="hero__heading">
+        Designing meaningful<br>
+        experiences at <span class="accent">product scale.</span>
+      </h1>
+
+      <div class="hero__row">
+
+        <!-- Left: services -->
+        <div class="hero__services">
+          <div class="service-item">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+              </svg>
+            </div>
+            Product Design
+          </div>
+          <div class="service-item">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M3 12h1M20 12h1M12 3v1M12 20v1"/>
+              </svg>
+            </div>
+            UX Design
+          </div>
+          <div class="service-item">
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </div>
+            User Research
+          </div>
+        </div>
+
+        <!-- Center: bio -->
+        <div class="hero__bio">
+          <p>
+            My focus is on <span class="highlight">blending<br>clear strategy</span>, thoughtful<br>
+            design, and user empathy<br>
+            to craft experiences that<br>
+            <span class="underline-deco">solve real problems.</span>
+          </p>
+        </div>
+
+        <!-- Right: deliverables -->
+        <div class="hero__deliverables">
+          <div class="deliverable-item">
+            Design Systems
+            <div class="deliverable-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            Competitor Analysis
+            <div class="deliverable-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            Brand Identity
+            <div class="deliverable-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       JOURNEY
+  ════════════════════════════════════════ -->
+  <section class="journey">
+    <div class="container">
+      <h2 class="journey__heading">A Senior-Level Journey in Product &amp; Systems Design</h2>
+
+      <!-- 01 -->
+      <div class="journey__item">
+        <div class="journey__label">
+          <div class="journey__num">01.<span>The Foundation</span></div>
+        </div>
+        <div class="journey__content">
+          <p>
+            My journey began in technical implementation, mastering frontend roots through HTML, CSS,
+            and Bootstrap. This technical rigor established a lifelong commitment to
+            <span class="bold">Design-to-Code Workflows</span>, ensuring that every interface is built
+            on a foundation of performance and responsiveness.
+          </p>
+          <div class="journey__tags-row">
+            <div class="journey__tag-group">
+              <div class="tag-title">Legacy Stack</div>
+              <div class="tag-value">Vanilla JS · SCSS ·<br>Responsive Architecture</div>
+            </div>
+            <div class="journey__tag-group">
+              <div class="tag-title">Core Philosophy</div>
+              <div class="tag-value">Performance First ·<br>Accessibility Compliance</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="journey__item">
+        <div class="journey__label">
+          <div class="journey__num">02.<span>The Evolution</span></div>
+        </div>
+        <div class="journey__content">
+          <p>
+            Transitioning into product design, I now bridge the gap between creative vision and technical
+            execution. By facilitating cross-functional <span class="bold">Stakeholder Alignment</span>,
+            I transform high-level marketing goals and complex product requirements into scalable digital
+            ecosystems utilizing <span class="bold">Atomic Design Principles</span>.
+          </p>
+          <div class="tags-inline">
+            <span class="tag">Atomic Systems</span>
+            <span class="tag">Component Libraries</span>
+            <span class="tag">Governance Model</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="journey__item">
+        <div class="journey__label">
+          <div class="journey__num">03.<span>Current Focus</span></div>
+        </div>
+        <div class="journey__content">
+          <p>
+            Today, I specialize in solving intricate challenges for high-maintenance SaaS products.
+            From Architectural Scalability to designing complex pricing logic and booking workflows,
+            my work focuses on Conversion-focused UX that balances business objectives with intuitive
+            user interaction.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       ALGORITHMIC DESIGN THINKING
+  ════════════════════════════════════════ -->
+  <section class="algo">
+    <div class="container">
+      <h2 class="algo__heading">Algorithmic Design Thinking &amp;<br>Systems Orchestration</h2>
+      <p class="algo__sub">A disciplined approach to solving high-stakes digital problems through structured exploration and empirical validation.</p>
+
+      <div class="algo__cards">
+
+        <!-- Card 01 -->
+        <div class="algo__card">
+          <div class="algo__card-num">01</div>
+          <div class="algo__card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <h3>Discovery &amp; Understanding</h3>
+          <p>Deep dives into stakeholder requirements, technical constraints, and the latent needs of the end-user. We define the problem space before drafting a single pixel.</p>
+          <ul class="algo__card-list">
+            <li>User Persona Mapping</li>
+            <li>Technical Audit</li>
+            <li>Competitive Benchmarking</li>
           </ul>
         </div>
-      </nav>
-    </section>
-    <div class="body-content p-0">
-        <section class="container p-top-bottom">
-              <div class="banner-section p-top-bottom d-flex flex-row">
-                <div>
-                  <img src="./assets/img/About-me.svg" alt="about-me" width="300px;" class="my-2">
-                  <h1>About me!  - skills and work</h1>
-                  <h1 class="about-me text-center" style="display: block;">
-                    <u>priyamadhavan11@gmail.com</u></h1>
-                </div>
-                <div class="heading-section">
-                  <h1 class="about-me d-block">
-                    I come from the vibrant town of <b>Dharmapuri in Tamil Nadu, India.</b>
-                    <br>
-                    <br>
-                    From a young age, my passion for <b>creativity and design</b> has driven me.
-                    Despite pursuing an engineering degree, I nurtured my artistic side through embroidery, which eventually led me to the field of design.
-                    <br> <br>
-                    After college, I joined an animation company, where I learned frontend development. However, my true passion lay in UX design, 
-                    where I could blend aesthetics with functionality to create user-centric experiences.
-                    <br> <br>
-                    I've worked on various platforms, from web applications to SaaS products, constantly seeking to improve user interactions. 
-                  </h1>
-                </div>
-                <!-- <div class="contact-section">
-                  <ul class="social-icons">
-                    <li><a href="https://www.linkedin.com/in/priya-madhavan/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                    <li><a href="https://twitter.com/priyaaamadhavan" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="https://dribbble.com/priyaamadhavan" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-                    <li><a href="https://github.com/priyaamadhavan" target="_blank"><i class="fab fa-github"></i></a></li>
-                  </ul>
-                </div> -->
-              </div>
-        </section>
-        <section class="container p-0 d-flex align-items-center mx-auto justify-content-center">
-            <div class="service-title inline">
-                <h1>Other Skills & Interests</h1>
-                <br>
-                <p class="text-left"> - My expertise lies in writing semantic <b>HTML</b>, crafting advanced <b>CSS</b> for responsive designs, and utilizing <b>CSS frameworks</b> like <b>Bootstrap</b>, <b>TailwindCSS</b> to build mobile-first websites.</p>
-                <p class="text-left"> - I excel at <b>solving issues within CSS</b> frameworks and ensuring cross-browser compatibility.</p>
-                <p class="text-left"> - I have in-depth knowledge of WordPress, enabling me to build and customize websites by creating custom themes and plugins.
-                   I enjoy collaborating with designers, backend developers, and stakeholders, effectively using tools like Trello, Jira, and Slack.</p>
-                <p class="text-left"> - I am adept at translating wireframes and prototypes into high-quality code, ensuring intuitive and user-friendly interfaces. </p>
-                <p class="text-left"> - <b>I like expanding and adapting my thought, skillset and processes to the changing problems and needs in the world around us. </b></p>
-                <p class="text-left"> - I thrive in ambitious, pro-active teams that value ethical product building and cultures that facilitate belonging.</b></p>
-            </div>
-            <!-- <div>
-              <h1>Contact</h1>
-              <li><a>priyamadhavan11@gmail.com</a></li>
-                <li><a>+91-9092092897</a></li>
-            </div> -->
-        </section>
-        <footer id="contact" class="container p-0 footer-bg">
-            <div class="footer-main">
-              <a class="logo-img text-center d-flex justify-content-center" href="./index.html"><img src="./assets/img/logo.svg" alt=""></a>
-              <div class="d-flex align-items-center flex-column">
-                <ul class="w-100 d-flex flex-row justify-content-center m-0 p-20">
-                  <li class="nav-item">
-                    <a class="nav-link" href="./index.html">Work <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="./about.html">About</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="./assets/resume/PriyangaMadhavan-Resume.pdf">Download CV</a>
-                  </li>
-                </ul>
-              </div>
-              <ul class="social-icons">
-                <li><a href="https://www.linkedin.com/in/priya-madhavan/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,256,256">
-                  <g fill-opacity="0.61176" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(9.84615,9.84615)"><path d="M21.125,0h-16.25c-2.69141,0 -4.875,2.18359 -4.875,4.875v16.25c0,2.69141 2.18359,4.875 4.875,4.875h16.25c2.69141,0 4.875,-2.18359 4.875,-4.875v-16.25c0,-2.69141 -2.18359,-4.875 -4.875,-4.875zM8.03906,22.07031h-4.03906l-0.02344,-12.09375h4.03906zM5.91797,8.39453h-0.02344c-1.32031,0 -2.17187,-0.91016 -2.17187,-2.04297c0,-1.16016 0.87891,-2.03906 2.22266,-2.03906c1.34375,0 2.16797,0.87891 2.19531,2.03906c0,1.13281 -0.85547,2.04297 -2.22266,2.04297zM22.04297,22.07031h-4.07422v-6.57031c0,-1.58984 -0.42187,-2.67187 -1.84375,-2.67187c-1.08594,0 -1.67187,0.73047 -1.95312,1.4375c-0.10547,0.25391 -0.13281,0.60156 -0.13281,0.95703v6.84766h-4.09375l-0.02344,-12.09375h4.09375l0.02344,1.70703c0.52344,-0.80859 1.39453,-1.95312 3.48047,-1.95312c2.58594,0 4.51953,1.6875 4.51953,5.31641v7.02344z"></path></g></g>
-                  </svg><span>LinkedIn</span></a></li>
-                <li><a href="https://twitter.com/priyaaamadhavan" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,256,256">
-                  <g fill-opacity="0.61176" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M11,4c-3.866,0 -7,3.134 -7,7v28c0,3.866 3.134,7 7,7h28c3.866,0 7,-3.134 7,-7v-28c0,-3.866 -3.134,-7 -7,-7zM13.08594,13h7.9375l5.63672,8.00977l6.83984,-8.00977h2.5l-8.21094,9.61328l10.125,14.38672h-7.93555l-6.54102,-9.29297l-7.9375,9.29297h-2.5l9.30859,-10.89648zM16.91406,15l14.10742,20h3.06445l-14.10742,-20z"></path></g></g>
-                  </svg><span>X</span></a></li>
-                <li><a href="https://github.com/priyaamadhavan" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0,0,256,256">
-                  <g fill-opacity="0.61176" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M17.791,46.836c0.711,-0.306 1.209,-1.013 1.209,-1.836v-5.4c0,-0.197 0.016,-0.402 0.041,-0.61c-0.014,0.004 -0.027,0.007 -0.041,0.01c0,0 -3,0 -3.6,0c-1.5,0 -2.8,-0.6 -3.4,-1.8c-0.7,-1.3 -1,-3.5 -2.8,-4.7c-0.3,-0.2 -0.1,-0.5 0.5,-0.5c0.6,0.1 1.9,0.9 2.7,2c0.9,1.1 1.8,2 3.4,2c2.487,0 3.82,-0.125 4.622,-0.555c0.934,-1.389 2.227,-2.445 3.578,-2.445v-0.025c-5.668,-0.182 -9.289,-2.066 -10.975,-4.975c-3.665,0.042 -6.856,0.405 -8.677,0.707c-0.058,-0.327 -0.108,-0.656 -0.151,-0.987c1.797,-0.296 4.843,-0.647 8.345,-0.714c-0.112,-0.276 -0.209,-0.559 -0.291,-0.849c-3.511,-0.178 -6.541,-0.039 -8.187,0.097c-0.02,-0.332 -0.047,-0.663 -0.051,-0.999c1.649,-0.135 4.597,-0.27 8.018,-0.111c-0.079,-0.5 -0.13,-1.011 -0.13,-1.543c0,-1.7 0.6,-3.5 1.7,-5c-0.5,-1.7 -1.2,-5.3 0.2,-6.6c2.7,0 4.6,1.3 5.5,2.1c1.699,-0.701 3.599,-1.101 5.699,-1.101c2.1,0 4,0.4 5.6,1.1c0.9,-0.8 2.8,-2.1 5.5,-2.1c1.5,1.4 0.7,5 0.2,6.6c1.1,1.5 1.7,3.2 1.6,5c0,0.484 -0.045,0.951 -0.11,1.409c3.499,-0.172 6.527,-0.034 8.204,0.102c-0.002,0.337 -0.033,0.666 -0.051,0.999c-1.671,-0.138 -4.775,-0.28 -8.359,-0.089c-0.089,0.336 -0.197,0.663 -0.325,0.98c3.546,0.046 6.665,0.389 8.548,0.689c-0.043,0.332 -0.093,0.661 -0.151,0.987c-1.912,-0.306 -5.171,-0.664 -8.879,-0.682c-1.665,2.878 -5.22,4.755 -10.777,4.974v0.031c2.6,0 5,3.9 5,6.6v5.4c0,0.823 0.498,1.53 1.209,1.836c9.161,-3.032 15.791,-11.672 15.791,-21.836c0,-12.682 -10.317,-23 -23,-23c-12.683,0 -23,10.318 -23,23c0,10.164 6.63,18.804 15.791,21.836z"></path></g></g>
-                  </svg><span>Github</span></a></li>
-              </ul>
-              <ul class="footer-menu">
-                <li><a>priyamadhavan11@gmail.com</a></li>
-                <li><a>+91-9092092897</a></li>
-              </ul>
-            </div>
-          </footer>
+
+        <!-- Card 02 -->
+        <div class="algo__card">
+          <div class="algo__card-num">02</div>
+          <div class="algo__card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
+          <h3>Validation &amp; Testing</h3>
+          <p>Continuous feedback loops. We prototype with high-fidelity components to pressure-test hypotheses and refine the interaction model until it feels intuitive.</p>
+          <ul class="algo__card-list">
+            <li>Rapid Prototyping</li>
+            <li>Usability Heuristics</li>
+            <li>Iterative Refinement</li>
+          </ul>
+        </div>
+
+      </div>
     </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       PREVIOUS PROJECTS
+  ════════════════════════════════════════ -->
+  <section class="projects">
+    <div class="container">
+      <h2 class="projects__heading">Previous Project Contributions</h2>
+
+      <div class="projects__grid">
+
+        <!-- QA Touch -->
+        <div class="project-card">
+          <div class="project-card__thumb">
+            <div class="blob"></div>
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__title">QA Touch</div>
+            <div class="project-card__desc">Modern Test Management Tool redefining the testing lifecycle for global QA teams.</div>
+            <div class="project-card__tags">
+              <span class="tag">Enterprise</span>
+              <span class="tag">SaaS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Novant Healthcare -->
+        <div class="project-card">
+          <div class="project-card__thumb">
+            <div class="blob"></div>
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__title">Novant Healthcare</div>
+            <div class="project-card__desc">Internal management system streamlining clinical workflows and patient data accessibility.</div>
+            <div class="project-card__tags">
+              <span class="tag">Healthcare</span>
+              <span class="tag">Internal Tool</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digital Art & Visuals -->
+        <div class="project-card">
+          <div class="project-card__thumb">
+            <div class="blob"></div>
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__title">Digital Art &amp; Visuals</div>
+            <div class="project-card__desc">A collection of Photoshop-driven experimental projects exploring texture, depth, and light.</div>
+            <div class="project-card__tags">
+              <span class="tag">Visual Design</span>
+              <span class="tag">Creative</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer>
+    <div class="container footer">
+      <span class="footer__copy">© 2024 Veridian Lab</span>
+      <nav class="footer__links">
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">Dribbble</a>
+      </nav>
+    </div>
+  </footer>
+
 </body>
 </html>
