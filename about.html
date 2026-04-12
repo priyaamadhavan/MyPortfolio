@@ -406,11 +406,11 @@
     /* ═══════════════════════════════════════════════════════
        PROJECTS SECTION
     ═══════════════════════════════════════════════════════ */
-    .projects {
-      padding: 60px;
+     .projects {
+      padding: 80px 0 64px;
       border-top: 1px solid var(--border);
     }
-
+ 
     .projects__heading {
       font-family: var(--font-head);
       font-size: clamp(24px, 4vw, 34px);
@@ -418,20 +418,20 @@
       letter-spacing: -0.02em;
       margin-bottom: 36px;
     }
-
+ 
     .projects__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
-
+ 
     .project-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
     }
-
+ 
     .project-card__thumb {
       width: 100%;
       aspect-ratio: 4/3;
@@ -439,64 +439,63 @@
       position: relative;
       overflow: hidden;
     }
-
+ 
     .project-card__thumb .blob {
       position: absolute;
       border-radius: 50%;
       filter: blur(28px);
       opacity: 0.7;
     }
-
+ 
     /* QA Touch — green blob */
     .project-card:nth-child(1) .blob {
       width: 80px; height: 80px;
       background: var(--green);
       top: 30%; left: 20%;
     }
-
+ 
     /* Novant — light green blob */
     .project-card:nth-child(2) .blob {
       width: 80px; height: 80px;
       background: #b8d878;
       top: 35%; left: 28%;
     }
-
+ 
     /* Digital Art — gray/beige blob */
     .project-card:nth-child(3) .blob {
       width: 80px; height: 80px;
       background: #ccc9be;
       top: 30%; left: 25%;
     }
-
+ 
     .project-card__body {
       padding: 18px 20px 20px;
     }
-
+ 
     .project-card__title {
       font-family: var(--font-head);
       font-size: 14px;
       font-weight: 700;
       margin-bottom: 6px;
     }
-
+ 
     .project-card__desc {
       font-size: 12px;
       color: var(--gray-text);
       line-height: 1.55;
       margin-bottom: 14px;
     }
-
+ 
     .project-card__tags {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
     }
-
+ 
     .project-card__tags .tag {
       font-size: 10.5px;
       padding: 3px 10px;
     }
-
     /* ═══════════════════════════════════════════════════════
        FOOTER
     ═══════════════════════════════════════════════════════ */
