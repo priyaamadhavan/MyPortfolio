@@ -3,417 +3,279 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Me</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <title>About — Priyanga M</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <!-- Shared styles: variables, nav, footer, utilities -->
+  <link rel="stylesheet" href="./styles.css"/>
   <style>
-    /* ─── Reset & Variables ─────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ── ABOUT-ONLY STYLES ── */
 
-    :root {
-      --bg:         #f0f2ec;
-      --white:      #ffffff;
-      --black:      #0a0a0a;
-      --green:      #8ab84a;
-      --green-dark: #6a9c2a;
-      --gray-light: #e4e8de;
-      --gray-mid:   #b0b8a4;
-      --gray-text:  #555f4a;
-      --tag-bg:     #e2e8d8;
-      --border:     #d4dac8;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--black);
-      font-family: var(--font-body);
-      font-size: 15px;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ─── Shared Layout ─────────────────────────────────── */
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-
-    /* ─── Section Label (ABOUT ME) ──────────────────────── */
-    .section-label {
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gray-text);
-      margin-bottom: 20px;
-    }
-
-    /* ═══════════════════════════════════════════════════════
-       HERO
-    ═══════════════════════════════════════════════════════ */
-    .hero {
-      padding: 72px 0 56px;
-    }
-
-    .hero__label {
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gray-text);
-      margin-bottom: 22px;
-    }
-
-    .hero__heading {
-      font-family: var(--font-head);
-      font-size: clamp(38px, 6vw, 58px);
-      font-weight: 800;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      color: var(--black);
-      max-width: 640px;
-    }
-
-    .hero__heading .accent {
-      color: var(--green);
-    }
-
-    /* ─── Services + Bio Row ────────────────────────────── */
-    .hero__row {
+    /* Hero */
+    .about-hero {
+      padding: 72px 60px 56px;
       display: grid;
-      grid-template-columns: 200px 1fr 200px;
-      gap: 0 48px;
-      margin-top: 56px;
+      grid-template-columns: 1fr 320px;
+      gap: 60px;
       align-items: start;
     }
 
-    .hero__services {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+    .about-hero__left {
+      animation: fadeUp 0.6s ease 0.1s forwards;
+      opacity: 0;
     }
 
-    .service-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--black);
+    .about-hero__heading {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5.5vw, 68px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
     }
 
-    .service-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      border: 1.5px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+    .about-hero__heading .accent { color: var(--green); }
+
+    .about-hero__bio {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 480px;
     }
 
-    .service-icon svg {
-      width: 13px;
-      height: 13px;
-      color: var(--green);
-    }
+    .about-hero__bio strong { color: var(--text); font-weight: 600; }
 
-    .hero__bio {
-      text-align: center;
-      padding: 0 16px;
-    }
-
-    .hero__bio p {
-      font-size: 15.5px;
-      line-height: 1.7;
-      color: var(--black);
-    }
-
-    .hero__bio .highlight {
-      color: var(--green);
-      font-weight: 600;
-    }
-
-    .hero__bio .underline-deco {
-      text-decoration: underline;
-      text-decoration-style: solid;
-      text-decoration-color: var(--black);
+    .about-hero__bio .underline-accent {
       font-weight: 700;
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
-    .hero__deliverables {
+    .about-hero__right {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      align-items: flex-end;
+      gap: 20px;
+      padding-top: 12px;
+      animation: fadeUp 0.6s ease 0.25s forwards;
+      opacity: 0;
     }
 
-    .deliverable-item {
+    .service-row {
       display: flex;
       align-items: center;
       gap: 10px;
       font-size: 13px;
       font-weight: 500;
-      color: var(--black);
+      color: var(--text);
     }
 
-    .deliverable-icon {
-      width: 28px;
-      height: 28px;
+    .service-dot {
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       border: 1.5px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      background: var(--bg);
     }
 
-    .deliverable-icon svg {
-      width: 13px;
-      height: 13px;
-      color: var(--green);
-    }
+    .service-dot svg { width: 12px; height: 12px; color: var(--green); }
 
-    /* ═══════════════════════════════════════════════════════
-       JOURNEY SECTION
-    ═══════════════════════════════════════════════════════ */
+    .divider { height: 1px; background: var(--border); }
+
+    /* Journey */
     .journey {
-      padding: 80px 0 64px;
+      padding: 72px 60px;
+      border-top: 1px solid var(--border);
     }
 
     .journey__heading {
-      font-family: var(--font-head);
-      font-size: clamp(24px, 4vw, 34px);
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3.5vw, 32px);
       font-weight: 700;
       line-height: 1.2;
-      letter-spacing: -0.02em;
-      margin-bottom: 60px;
+      letter-spacing: -0.5px;
+      margin-bottom: 56px;
     }
 
     .journey__item {
       display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 0 48px;
-      margin-bottom: 64px;
-      padding-bottom: 64px;
+      grid-template-columns: 220px 1fr;
+      gap: 0 60px;
+      padding-bottom: 56px;
+      margin-bottom: 56px;
       border-bottom: 1px solid var(--border);
     }
 
-    .journey__item:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .journey__label {
-      padding-top: 4px;
-    }
+    .journey__item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
     .journey__num {
-      font-family: var(--font-head);
-      font-size: 28px;
+      font-family: var(--font-display);
+      font-size: 30px;
       font-weight: 800;
-      color: var(--black);
+      color: var(--text);
       line-height: 1;
     }
 
-    .journey__num span {
-      font-size: 13px;
+    .journey__num-label {
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-text);
-      display: block;
+      letter-spacing: 2px;
+      color: var(--green);
       margin-top: 6px;
     }
 
-    .journey__content {}
-
-    .journey__content p {
-      font-size: 14.5px;
-      line-height: 1.75;
-      color: #333;
+    .journey__body p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
       margin-bottom: 20px;
     }
 
-    .journey__content .bold {
-      font-weight: 700;
-      color: var(--black);
-    }
+    .journey__body p strong { color: var(--text); font-weight: 600; }
 
-    .journey__tags-row {
+    .journey__cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
       margin-top: 20px;
     }
 
-    .journey__tag-group {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px 16px;
+    .journey__card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 16px 18px;
     }
 
-    .journey__tag-group .tag-title {
+    .journey__card-label {
       font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-text);
+      letter-spacing: 1.5px;
+      color: var(--muted);
       margin-bottom: 6px;
     }
 
-    .journey__tag-group .tag-value {
+    .journey__card-value {
       font-size: 13px;
       font-weight: 500;
-      color: var(--black);
-      line-height: 1.5;
+      color: var(--text);
+      line-height: 1.55;
     }
 
-    .tags-inline {
+    .tags-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 20px;
     }
 
-    .tag {
-      background: var(--tag-bg);
-      border-radius: 100px;
-      padding: 5px 14px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--black);
-    }
-
-    /* ═══════════════════════════════════════════════════════
-       ALGORITHMIC DESIGN SECTION
-    ═══════════════════════════════════════════════════════ */
-    .algo {
-      padding: 80px 0 64px;
+    /* Design Thinking */
+    .thinking {
+      padding: 72px 60px;
       border-top: 1px solid var(--border);
     }
 
-    .algo__heading {
-      font-family: var(--font-head);
-      font-size: clamp(24px, 4vw, 34px);
+    .thinking__heading {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3.5vw, 32px);
       font-weight: 700;
+      letter-spacing: -0.5px;
       line-height: 1.2;
-      letter-spacing: -0.02em;
       margin-bottom: 8px;
     }
 
-    .algo__sub {
+    .thinking__sub {
       font-size: 13px;
-      color: var(--gray-text);
+      color: var(--muted);
+      max-width: 440px;
+      line-height: 1.7;
       margin-bottom: 40px;
-      max-width: 480px;
     }
 
-    .algo__cards {
+    .thinking__cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
 
-    .algo__card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+    .thinking__card {
+      background: var(--card-bg);
+      border-radius: 16px;
       padding: 28px;
       position: relative;
+      transition: transform 0.2s;
     }
 
-    .algo__card-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--tag-bg);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
+    .thinking__card:hover { transform: translateY(-3px); }
+    .thinking__card.highlight { background: var(--green); color: var(--white); }
 
-    .algo__card-icon svg {
-      width: 18px;
-      height: 18px;
-      color: var(--green-dark);
-    }
-
-    .algo__card-num {
+    .thinking__card-num {
       position: absolute;
-      top: 28px;
-      right: 28px;
-      font-family: var(--font-head);
-      font-size: 36px;
+      top: 24px; right: 24px;
+      font-family: var(--font-display);
+      font-size: 42px;
       font-weight: 800;
-      color: var(--gray-light);
+      color: rgba(0,0,0,0.07);
       line-height: 1;
     }
 
-    .algo__card h3 {
-      font-family: var(--font-head);
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 10px;
+    .thinking__card.highlight .thinking__card-num { color: rgba(255,255,255,0.12); }
+
+    .thinking__card-icon {
+      width: 40px; height: 40px;
+      background: rgba(0,0,0,0.07);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
     }
 
-    .algo__card p {
-      font-size: 13px;
-      color: var(--gray-text);
-      line-height: 1.65;
-      margin-bottom: 18px;
+    .thinking__card.highlight .thinking__card-icon { background: rgba(255,255,255,0.15); }
+    .thinking__card-icon svg { width: 18px; height: 18px; color: var(--green); }
+    .thinking__card.highlight .thinking__card-icon svg { color: var(--white); }
+
+    .thinking__card h3 { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+    .thinking__card.highlight h3 { color: var(--white); }
+    .thinking__card p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
+    .thinking__card.highlight p { color: rgba(255,255,255,0.75); }
+
+    .thinking__list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+
+    .thinking__list li {
+      font-size: 13px; font-weight: 500; color: var(--text);
+      display: flex; align-items: center; gap: 8px;
     }
 
-    .algo__card-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+    .thinking__card.highlight .thinking__list li { color: rgba(255,255,255,0.9); }
 
-    .algo__card-list li {
-      font-size: 13px;
-      color: var(--black);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .algo__card-list li::before {
+    .thinking__list li::before {
       content: '';
-      display: inline-block;
-      width: 16px;
-      height: 16px;
+      width: 18px; height: 18px;
       background: var(--tag-bg);
-      border-radius: 50%;
-      flex-shrink: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238ab84a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-      background-size: 10px;
-      background-repeat: no-repeat;
-      background-position: center;
+      border-radius: 50%; flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23416600' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-size: 10px; background-repeat: no-repeat; background-position: center;
     }
 
-    /* ═══════════════════════════════════════════════════════
-       PROJECTS SECTION
-    ═══════════════════════════════════════════════════════ */
+    .thinking__card.highlight .thinking__list li::before {
+      background-color: rgba(255,255,255,0.15);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    }
+
+    /* Projects */
     .projects {
-      padding: 80px 0 64px;
+      padding: 72px 60px;
       border-top: 1px solid var(--border);
     }
 
     .projects__heading {
-      font-family: var(--font-head);
-      font-size: clamp(24px, 4vw, 34px);
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3.5vw, 32px);
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.5px;
       margin-bottom: 36px;
     }
 
@@ -424,418 +286,221 @@
     }
 
     .project-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
+      background: var(--card-bg);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
     }
 
     .project-card__thumb {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: var(--gray-light);
-      position: relative;
-      overflow: hidden;
+      width: 100%; aspect-ratio: 4/3;
+      background: #d0d4c8;
+      position: relative; overflow: hidden;
     }
 
-    .project-card__thumb .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(28px);
-      opacity: 0.7;
+    .project-card__blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(30px); opacity: 0.75;
+      width: 90px; height: 90px; top: 30%; left: 20%;
     }
 
-    /* QA Touch — green blob */
-    .project-card:nth-child(1) .blob {
-      width: 80px; height: 80px;
-      background: var(--green);
-      top: 30%; left: 20%;
-    }
+    .project-card:nth-child(1) .project-card__blob { background: var(--green-bright); }
+    .project-card:nth-child(2) .project-card__blob { background: #b8d878; top: 35%; left: 28%; }
+    .project-card:nth-child(3) .project-card__blob { background: #c4c8bc; }
 
-    /* Novant — light green blob */
-    .project-card:nth-child(2) .blob {
-      width: 80px; height: 80px;
-      background: #b8d878;
-      top: 35%; left: 28%;
-    }
+    .project-card__body { padding: 18px 20px 20px; }
+    .project-card__title { font-family: var(--font-display); font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .project-card__desc { font-size: 12px; color: var(--muted); line-height: 1.55; margin-bottom: 14px; }
+    .project-card__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .project-card__tags .tag-pill { font-size: 10.5px; padding: 3px 10px; }
 
-    /* Digital Art — gray/beige blob */
-    .project-card:nth-child(3) .blob {
-      width: 80px; height: 80px;
-      background: #ccc9be;
-      top: 30%; left: 25%;
-    }
-
-    .project-card__body {
-      padding: 18px 20px 20px;
-    }
-
-    .project-card__title {
-      font-family: var(--font-head);
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .project-card__desc {
-      font-size: 12px;
-      color: var(--gray-text);
-      line-height: 1.55;
-      margin-bottom: 14px;
-    }
-
-    .project-card__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .project-card__tags .tag {
-      font-size: 10.5px;
-      padding: 3px 10px;
-    }
-
-    /* ═══════════════════════════════════════════════════════
-       FOOTER
-    ═══════════════════════════════════════════════════════ */
-    .footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer__copy {
-      font-size: 12px;
-      color: var(--gray-text);
-    }
-
-    .footer__links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer__links a {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--black);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer__links a:hover {
-      color: var(--green);
-    }
-
-    /* ═══════════════════════════════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════════════════════════════ */
-    @media (max-width: 720px) {
-      .container { padding: 0 20px; }
-
-      .hero__row {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .hero__deliverables { align-items: flex-start; }
-
-      .journey__item {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      .algo__cards {
-        grid-template-columns: 1fr;
-      }
-
-      .projects__grid {
-        grid-template-columns: 1fr;
-      }
-
-      .journey__tags-row {
-        grid-template-columns: 1fr;
-      }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .about-hero, .journey, .thinking, .projects { padding: 48px 24px; }
+      .about-hero { grid-template-columns: 1fr; }
+      .journey__item { grid-template-columns: 1fr; gap: 16px; }
+      .journey__cards, .thinking__cards { grid-template-columns: 1fr; }
+      .projects__grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ════════════════════════════════════════
-       HERO
-  ════════════════════════════════════════ -->
-  <section class="hero">
-    <div class="container">
-      <p class="hero__label">About Me</p>
-      <h1 class="hero__heading">
+  <!-- NAV (markup only — styles come from styles.css) -->
+  <nav>
+    <a href="./index.html" class="nav-logo">Priyanga M</a>
+    <ul class="nav-links">
+      <li><a href="./index.html#works">Work ▾</a></li>
+      <li><a href="./about.html" class="active">About</a></li>
+      <li><a target="_blank" href="./assets/resume/Priyanga-M-Resume.pdf" class="btn-resume">Resume</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="about-hero__left">
+      <div class="section-label">About Me</div>
+      <h1 class="about-hero__heading">
         Designing meaningful<br>
         experiences at <span class="accent">product scale.</span>
       </h1>
-
-      <div class="hero__row">
-
-        <!-- Left: services -->
-        <div class="hero__services">
-          <div class="service-item">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
-                <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
-              </svg>
-            </div>
-            Product Design
-          </div>
-          <div class="service-item">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M3 12h1M20 12h1M12 3v1M12 20v1"/>
-              </svg>
-            </div>
-            UX Design
-          </div>
-          <div class="service-item">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              </svg>
-            </div>
-            User Research
-          </div>
-        </div>
-
-        <!-- Center: bio -->
-        <div class="hero__bio">
-          <p>
-            My focus is on <span class="highlight">blending<br>clear strategy</span>, thoughtful<br>
-            design, and user empathy<br>
-            to craft experiences that<br>
-            <span class="underline-deco">solve real problems.</span>
-          </p>
-        </div>
-
-        <!-- Right: deliverables -->
-        <div class="hero__deliverables">
-          <div class="deliverable-item">
-            Design Systems
-            <div class="deliverable-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-              </svg>
-            </div>
-          </div>
-          <div class="deliverable-item">
-            Competitor Analysis
-            <div class="deliverable-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-              </svg>
-            </div>
-          </div>
-          <div class="deliverable-item">
-            Brand Identity
-            <div class="deliverable-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
+      <p class="about-hero__bio">
+        My focus is on <strong>blending clear strategy</strong>, thoughtful design, and user empathy
+        to craft experiences that <span class="underline-accent">solve real problems.</span>
+      </p>
+    </div>
+    <div class="about-hero__right">
+      <div class="service-row">
+        <div class="service-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        Product Design
+      </div>
+      <div class="service-row">
+        <div class="service-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M3 12h1M20 12h1M12 3v1M12 20v1"/></svg></div>
+        UX Design
+      </div>
+      <div class="service-row">
+        <div class="service-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        User Research
+      </div>
+      <div class="divider"></div>
+      <div class="service-row">
+        <div class="service-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        Design Systems
+      </div>
+      <div class="service-row">
+        <div class="service-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        Competitor Analysis
+      </div>
+      <div class="service-row">
+        <div class="service-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        Brand Identity
       </div>
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
-       JOURNEY
-  ════════════════════════════════════════ -->
+  <!-- JOURNEY -->
   <section class="journey">
-    <div class="container">
-      <h2 class="journey__heading">A Senior-Level Journey in Product &amp; Systems Design</h2>
-
-      <!-- 01 -->
-      <div class="journey__item">
-        <div class="journey__label">
-          <div class="journey__num">01.<span>The Foundation</span></div>
-        </div>
-        <div class="journey__content">
-          <p>
-            My journey began in technical implementation, mastering frontend roots through HTML, CSS,
-            and Bootstrap. This technical rigor established a lifelong commitment to
-            <span class="bold">Design-to-Code Workflows</span>, ensuring that every interface is built
-            on a foundation of performance and responsiveness.
-          </p>
-          <div class="journey__tags-row">
-            <div class="journey__tag-group">
-              <div class="tag-title">Legacy Stack</div>
-              <div class="tag-value">Vanilla JS · SCSS ·<br>Responsive Architecture</div>
-            </div>
-            <div class="journey__tag-group">
-              <div class="tag-title">Core Philosophy</div>
-              <div class="tag-value">Performance First ·<br>Accessibility Compliance</div>
-            </div>
+    <h2 class="journey__heading">A Senior-Level Journey in Product &amp; Systems Design</h2>
+    <div class="journey__item">
+      <div>
+        <div class="journey__num">01.</div>
+        <div class="journey__num-label">The Foundation</div>
+      </div>
+      <div class="journey__body">
+        <p>My journey began in technical implementation, mastering frontend roots through HTML, CSS, and Bootstrap. This technical rigor established a lifelong commitment to <strong>Design-to-Code Workflows</strong>, ensuring that every interface is built on a foundation of performance and responsiveness.</p>
+        <div class="journey__cards">
+          <div class="journey__card">
+            <div class="journey__card-label">Legacy Stack</div>
+            <div class="journey__card-value">Vanilla JS · SCSS ·<br>Responsive Architecture</div>
+          </div>
+          <div class="journey__card">
+            <div class="journey__card-label">Core Philosophy</div>
+            <div class="journey__card-value">Performance First ·<br>Accessibility Compliance</div>
           </div>
         </div>
       </div>
-
-      <!-- 02 -->
-      <div class="journey__item">
-        <div class="journey__label">
-          <div class="journey__num">02.<span>The Evolution</span></div>
-        </div>
-        <div class="journey__content">
-          <p>
-            Transitioning into product design, I now bridge the gap between creative vision and technical
-            execution. By facilitating cross-functional <span class="bold">Stakeholder Alignment</span>,
-            I transform high-level marketing goals and complex product requirements into scalable digital
-            ecosystems utilizing <span class="bold">Atomic Design Principles</span>.
-          </p>
-          <div class="tags-inline">
-            <span class="tag">Atomic Systems</span>
-            <span class="tag">Component Libraries</span>
-            <span class="tag">Governance Model</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 03 -->
-      <div class="journey__item">
-        <div class="journey__label">
-          <div class="journey__num">03.<span>Current Focus</span></div>
-        </div>
-        <div class="journey__content">
-          <p>
-            Today, I specialize in solving intricate challenges for high-maintenance SaaS products.
-            From Architectural Scalability to designing complex pricing logic and booking workflows,
-            my work focuses on Conversion-focused UX that balances business objectives with intuitive
-            user interaction.
-          </p>
-        </div>
-      </div>
-
     </div>
-  </section>
-
-  <!-- ════════════════════════════════════════
-       ALGORITHMIC DESIGN THINKING
-  ════════════════════════════════════════ -->
-  <section class="algo">
-    <div class="container">
-      <h2 class="algo__heading">Algorithmic Design Thinking &amp;<br>Systems Orchestration</h2>
-      <p class="algo__sub">A disciplined approach to solving high-stakes digital problems through structured exploration and empirical validation.</p>
-
-      <div class="algo__cards">
-
-        <!-- Card 01 -->
-        <div class="algo__card">
-          <div class="algo__card-num">01</div>
-          <div class="algo__card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-          </div>
-          <h3>Discovery &amp; Understanding</h3>
-          <p>Deep dives into stakeholder requirements, technical constraints, and the latent needs of the end-user. We define the problem space before drafting a single pixel.</p>
-          <ul class="algo__card-list">
-            <li>User Persona Mapping</li>
-            <li>Technical Audit</li>
-            <li>Competitive Benchmarking</li>
-          </ul>
+    <div class="journey__item">
+      <div>
+        <div class="journey__num">02.</div>
+        <div class="journey__num-label">The Evolution</div>
+      </div>
+      <div class="journey__body">
+        <p>Transitioning into product design, I now bridge the gap between creative vision and technical execution. By facilitating cross-functional <strong>Stakeholder Alignment</strong>, I transform high-level marketing goals and complex product requirements into scalable digital ecosystems utilizing <strong>Atomic Design Principles</strong>.</p>
+        <div class="tags-row">
+          <span class="tag-pill">Atomic Systems</span>
+          <span class="tag-pill">Component Libraries</span>
+          <span class="tag-pill">Governance Model</span>
         </div>
-
-        <!-- Card 02 -->
-        <div class="algo__card">
-          <div class="algo__card-num">02</div>
-          <div class="algo__card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-            </svg>
-          </div>
-          <h3>Validation &amp; Testing</h3>
-          <p>Continuous feedback loops. We prototype with high-fidelity components to pressure-test hypotheses and refine the interaction model until it feels intuitive.</p>
-          <ul class="algo__card-list">
-            <li>Rapid Prototyping</li>
-            <li>Usability Heuristics</li>
-            <li>Iterative Refinement</li>
-          </ul>
-        </div>
-
+      </div>
+    </div>
+    <div class="journey__item">
+      <div>
+        <div class="journey__num">03.</div>
+        <div class="journey__num-label">Current Focus</div>
+      </div>
+      <div class="journey__body">
+        <p>Today, I specialize in solving intricate challenges for high-maintenance SaaS products. From Architectural Scalability to designing complex pricing logic and booking workflows, my work focuses on Conversion-focused UX that balances business objectives with intuitive user interaction.</p>
       </div>
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
-       PREVIOUS PROJECTS
-  ════════════════════════════════════════ -->
+  <!-- DESIGN THINKING -->
+  <section class="thinking">
+    <div class="section-label">Design Process</div>
+    <h2 class="thinking__heading">Algorithmic Design Thinking &amp;<br>Systems Orchestration</h2>
+    <p class="thinking__sub">A disciplined approach to solving high-stakes digital problems through structured exploration and empirical validation.</p>
+    <div class="thinking__cards">
+      <div class="thinking__card">
+        <div class="thinking__card-num">01</div>
+        <div class="thinking__card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <h3>Discovery &amp; Understanding</h3>
+        <p>Deep dives into stakeholder requirements, technical constraints, and the latent needs of the end-user. We define the problem space before drafting a single pixel.</p>
+        <ul class="thinking__list">
+          <li>User Persona Mapping</li>
+          <li>Technical Audit</li>
+          <li>Competitive Benchmarking</li>
+        </ul>
+      </div>
+      <div class="thinking__card highlight">
+        <div class="thinking__card-num">02</div>
+        <div class="thinking__card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <h3>Validation &amp; Testing</h3>
+        <p>Continuous feedback loops. We prototype with high-fidelity components to pressure-test hypotheses and refine the interaction model until it feels intuitive.</p>
+        <ul class="thinking__list">
+          <li>Rapid Prototyping</li>
+          <li>Usability Heuristics</li>
+          <li>Iterative Refinement</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
   <section class="projects">
-    <div class="container">
-      <h2 class="projects__heading">Previous Project Contributions</h2>
-
-      <div class="projects__grid">
-
-        <!-- QA Touch -->
-        <div class="project-card">
-          <div class="project-card__thumb">
-            <div class="blob"></div>
-          </div>
-          <div class="project-card__body">
-            <div class="project-card__title">QA Touch</div>
-            <div class="project-card__desc">Modern Test Management Tool redefining the testing lifecycle for global QA teams.</div>
-            <div class="project-card__tags">
-              <span class="tag">Enterprise</span>
-              <span class="tag">SaaS</span>
-            </div>
-          </div>
+    <h2 class="projects__heading">Previous Project Contributions</h2>
+    <div class="projects__grid">
+      <div class="project-card">
+        <div class="project-card__thumb"><div class="project-card__blob"></div></div>
+        <div class="project-card__body">
+          <div class="project-card__title">QA Touch</div>
+          <div class="project-card__desc">Modern Test Management Tool redefining the testing lifecycle for global QA teams.</div>
+          <div class="project-card__tags"><span class="tag-pill">Enterprise</span><span class="tag-pill">SaaS</span></div>
         </div>
-
-        <!-- Novant Healthcare -->
-        <div class="project-card">
-          <div class="project-card__thumb">
-            <div class="blob"></div>
-          </div>
-          <div class="project-card__body">
-            <div class="project-card__title">Novant Healthcare</div>
-            <div class="project-card__desc">Internal management system streamlining clinical workflows and patient data accessibility.</div>
-            <div class="project-card__tags">
-              <span class="tag">Healthcare</span>
-              <span class="tag">Internal Tool</span>
-            </div>
-          </div>
+      </div>
+      <div class="project-card">
+        <div class="project-card__thumb"><div class="project-card__blob"></div></div>
+        <div class="project-card__body">
+          <div class="project-card__title">Novant Healthcare</div>
+          <div class="project-card__desc">Internal management system streamlining clinical workflows and patient data accessibility.</div>
+          <div class="project-card__tags"><span class="tag-pill">Healthcare</span><span class="tag-pill">Internal Tool</span></div>
         </div>
-
-        <!-- Digital Art & Visuals -->
-        <div class="project-card">
-          <div class="project-card__thumb">
-            <div class="blob"></div>
-          </div>
-          <div class="project-card__body">
-            <div class="project-card__title">Digital Art &amp; Visuals</div>
-            <div class="project-card__desc">A collection of Photoshop-driven experimental projects exploring texture, depth, and light.</div>
-            <div class="project-card__tags">
-              <span class="tag">Visual Design</span>
-              <span class="tag">Creative</span>
-            </div>
-          </div>
+      </div>
+      <div class="project-card">
+        <div class="project-card__thumb"><div class="project-card__blob"></div></div>
+        <div class="project-card__body">
+          <div class="project-card__title">Digital Art &amp; Visuals</div>
+          <div class="project-card__desc">A collection of Photoshop-driven experimental projects exploring texture, depth, and light.</div>
+          <div class="project-card__tags"><span class="tag-pill">Visual Design</span><span class="tag-pill">Creative</span></div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════ -->
+  <!-- FOOTER (markup only — styles come from styles.css) -->
   <footer>
-    <div class="container footer">
-      <span class="footer__copy">© 2024 Veridian Lab</span>
-      <nav class="footer__links">
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
-        <a href="#">Dribbble</a>
-      </nav>
+    <div>
+      <div class="footer-copy">© 2026 All rights reserved. Made with intention.</div>
+    </div>
+    <div class="footer-links">
+      <a href="www.linkedin.com/in/priya-madhavan">LinkedIn</a>
+      <a href="https://x.com/priyaaamadhavan">Twitter</a>
     </div>
   </footer>
 
