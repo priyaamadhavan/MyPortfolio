@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     /* ─── Reset & Variables ─────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg: #f4f5ef;
@@ -72,7 +71,7 @@
     }
 
     .hero__heading {
-      font-family: var(--font-head);
+      font-family: var(--font-body);
       font-size: clamp(38px, 6vw, 58px);
       font-weight: 800;
       line-height: 1.08;
@@ -189,7 +188,7 @@
     }
 
     .journey__heading {
-      font-family: var(--font-head);
+      font-family: var(--font-body);
       font-size: clamp(24px, 4vw, 34px);
       font-weight: 700;
       line-height: 1.2;
@@ -217,7 +216,7 @@
     }
 
     .journey__num {
-      font-family: var(--font-head);
+      font-family: var(--font-body);
       font-size: 28px;
       font-weight: 800;
       color: var(--text);
@@ -229,12 +228,10 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-text);
+      color: var(--green);
       display: block;
       margin-top: 6px;
     }
-
-    .journey__content {}
 
     .journey__content p {
       font-size: 18px;
@@ -267,7 +264,7 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gray-text);
+      color: var(--green);
       margin-bottom: 6px;
     }
 
@@ -303,7 +300,7 @@
     }
 
     .algo__heading {
-      font-family: var(--font-head);
+      font-family: var(--font-body);
       font-size: clamp(24px, 4vw, 34px);
       font-weight: 700;
       line-height: 1.2;
@@ -313,7 +310,7 @@
 
     .algo__sub {
       font-size: 13px;
-      color: var(--gray-text);
+      color: var(--green);
       margin-bottom: 40px;
       max-width: 480px;
     }
@@ -346,22 +343,22 @@
     .algo__card-icon svg {
       width: 18px;
       height: 18px;
-      color: var(--green-dark);
+      color: var(--green-bright);
     }
 
     .algo__card-num {
       position: absolute;
       top: 28px;
       right: 28px;
-      font-family: var(--font-head);
+      font-family: var(--font-body);
       font-size: 36px;
       font-weight: 800;
-      color: var(--gray-light);
+      color: var(--text);
       line-height: 1;
     }
 
     .algo__card h3 {
-      font-family: var(--font-head);
+      font-family: var(--font-body);
       font-size: 16px;
       font-weight: 700;
       margin-bottom: 10px;
@@ -369,7 +366,7 @@
 
     .algo__card p {
       font-size: 13px;
-      color: var(--gray-text);
+      color: var(--text);
       line-height: 1.65;
       margin-bottom: 18px;
     }
@@ -389,7 +386,7 @@
       gap: 8px;
     }
 
-    .algo__card-list li::before {
+    /* .algo__card-list li::before {
       content: '';
       display: inline-block;
       width: 16px;
@@ -401,7 +398,7 @@
       background-size: 10px;
       background-repeat: no-repeat;
       background-position: center;
-    }
+    } */
 
     /* ═══════════════════════════════════════════════════════
        PROJECTS SECTION
@@ -412,7 +409,7 @@
     }
  
     .projects__heading {
-      font-family: var(--font-head);
+      font-family: var(--font-body);
       font-size: clamp(24px, 4vw, 34px);
       font-weight: 700;
       letter-spacing: -0.02em;
@@ -435,7 +432,7 @@
     .project-card__thumb {
       width: 100%;
       aspect-ratio: 4/3;
-      background: var(--gray-light);
+      background: var(--text);
       position: relative;
       overflow: hidden;
     }
@@ -457,14 +454,14 @@
     /* Novant — light green blob */
     .project-card:nth-child(2) .blob {
       width: 80px; height: 80px;
-      background: #b8d878;
+      background: var(--green);
       top: 35%; left: 28%;
     }
  
     /* Digital Art — gray/beige blob */
     .project-card:nth-child(3) .blob {
       width: 80px; height: 80px;
-      background: #ccc9be;
+      background: var(--green);
       top: 30%; left: 25%;
     }
  
@@ -473,7 +470,7 @@
     }
  
     .project-card__title {
-      font-family: var(--font-head);
+      font-family: var(--font-body);
       font-size: 14px;
       font-weight: 700;
       margin-bottom: 6px;
@@ -481,7 +478,7 @@
  
     .project-card__desc {
       font-size: 12px;
-      color: var(--gray-text);
+      color: var(--text);
       line-height: 1.55;
       margin-bottom: 14px;
     }
@@ -509,7 +506,7 @@
 
     .footer__copy {
       font-size: 12px;
-      color: var(--gray-text);
+      color: var(--text);
     }
 
     .footer__links {
@@ -563,9 +560,6 @@
   </style>
 </head>
 <body>
-
-  <!-- ════════════════════════════════════════
-       HERO <!-- NAV -->
   <nav>
     <a href="./index.html" class="nav-logo">Priyanga M</a>
     <ul class="nav-links">
@@ -574,7 +568,6 @@
       <li><a target="_blank" href="./assets/resume/Priyanga-M-Resume.pdf" class="btn-resume">Resume</a></li>
     </ul>
   </nav>
-  <!-- ════════════════════════════════════════ -->
   <section class="hero">
       <p class="hero__label">About Me</p>
       <h1 class="hero__heading">
