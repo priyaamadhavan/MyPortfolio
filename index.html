@@ -452,14 +452,21 @@
     }
 
     .stack-card {
-      background: var(--card-bg);
+      /* background: var(--card-bg);
       border-radius: 16px;
       padding: 24px 20px;
-      text-align: left;
-      transition: transform 0.2s;
+      text-align: left; */
+      transition: all 0.3s ease;
+      transform: translateY(0) scale(1);
     }
-
-    .stack-card:hover { transform: translateY(-3px); }
+  .stack-grid:hover .stack-card {
+      opacity: 0.5;
+    }
+    .stack-card:hover {  
+      transform: translateY(-8px) scale(1.05);
+    opacity: 1 !important;
+    z-index: 2; 
+    }
 
     .stack-card.highlight {
       background: var(--green-bright);
@@ -494,15 +501,21 @@
     }
 
     .stack-card.highlight p { color: var(--text); }
-
+  .tool-tags-wrapper {
+      overflow: hidden;
+      width: 100%;
+      margin-top: 20px;
+    }
     .tool-tags {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
+      /* flex-wrap: wrap; */
+      gap: 14px;
+      /* justify-content: center; */
+      width: max-content;
+      animation: scrollTags 20s linear infinite;
     }
 
-    .tool-tag {
+    /* .tool-tag {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 999px;
@@ -512,15 +525,27 @@
       color: var(--text);
       transition: background 0.2s, transform 0.2s;
       cursor: default;
-    }
+    } */
 
-    .tool-tag:hover {
+    /* .tool-tag:hover {
       background: var(--green);
       color: var(--white);
       border-color: var(--green);
       transform: translateY(-2px);
-    }
+    } */
+  .tool-tag {
+  white-space: nowrap;
+}
 
+/* Animation */
+@keyframes scrollTags {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
     /* ── PROFESSIONAL TRAJECTORY ── */
     .traj-section {
       padding: 60px 60px;
@@ -669,6 +694,16 @@
       .traj-section { grid-template-columns: 1fr; gap: 32px; }
       footer { flex-direction: column; gap: 20px; text-align: center; padding: 30px 24px; }
     }
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -709,7 +744,7 @@
   </section>
 
   <!-- SELECTED WORKS -->
-  <section class="works-section" id="works">
+  <section class="works-section reveal" id="works">
     <div class="section-header">
       <div>
         <h2>Selected Works</h2>
@@ -761,7 +796,7 @@
   </section>
 
   <!-- CURRENT ORBIT -->
-  <section class="orbit-section" id="about">
+  <section class="orbit-section reveal" id="about">
     <div class="orbit-image">
       <div class="orbit-image-placeholder">
         <svg class="icon-laptop" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -792,7 +827,7 @@
   </section>
 
   <!-- THE MODERN STACK -->
-  <section class="stack-section">
+  <section class="stack-section reveal">
     <h2>The Modern Stack</h2>
     <div class="stack-grid">
       <div class="stack-card">
@@ -824,7 +859,7 @@
         <p>Tailwind CSS and SaaS Products.</p>
       </div>
     </div>
-
+<div class="tool-tags-wrapper">
     <div class="tool-tags">
       <span class="tool-tag">Figma</span>
       <span class="tool-tag">fig.jam</span>
@@ -834,10 +869,11 @@
       <span class="tool-tag">Product Thinking</span>
       <span class="tool-tag">Canvas</span>
     </div>
+</div>
   </section>
 
   <!-- PROFESSIONAL TRAJECTORY -->
-  <section class="traj-section">
+  <section class="traj-section reveal">
     <div class="traj-left">
       <div class="traj-label">The Journey</div>
       <h2>Design<br>Experience</h2>
@@ -906,6 +942,22 @@
       <a href="https://x.com/priyaaamadhavan">Twitter</a>
     </div>
   </footer>
+<script>
+const reveals = document.querySelectorAll('.reveal');
 
+function revealOnScroll() {
+  const triggerBottom = window.innerHeight * 0.85;
+
+  reveals.forEach(el => {
+    const boxTop = el.getBoundingClientRect().top;
+
+    if (boxTop < triggerBottom) {
+      el.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+</script>
 </body>
 </html>
