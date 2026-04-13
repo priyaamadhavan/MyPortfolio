@@ -816,7 +816,7 @@
 <rect width="320" height="256" rx="32" fill="url(#paint0_linear_3201_5102)"/>
 <g class="rotate-group" opacity="0.8" filter="url(#filter0_dd_3201_5102)">
 <g clip-path="url(#clip0_3201_5102)">
-<rect x="110.705" y="52.0918" width="128" height="128" rx="32" transform="rotate(12 110.705 52.0918)" fill="#B2FE3F"/>
+<rect class="rotate-rect" x="110.705" y="52.0918" width="128" height="128" rx="32" transform="rotate(12 110.705 52.0918)" fill="#B2FE3F"/>
 <rect opacity="0.3" x="110.705" y="52.0918" width="128" height="128" transform="rotate(12 110.705 52.0918)" fill="url(#pattern0_3201_5102)"/>
 </g>
 </g>
@@ -936,11 +936,20 @@
     }
   });
 
-  // 🔥 Rotate ONLY the <g> inside SVG
-   gsap.to(".rotate-group", {
+ // Rotate <g>
+  gsap.to(".rotate-group", {
     rotation: 360,
     transformOrigin: "50% 50%",
-    duration: 8,
+    duration: 10,
+    ease: "none",
+    repeat: -1
+  });
+
+  // Rotate <rect> (slightly different speed = premium feel)
+  gsap.to(".rotate-rect", {
+    rotation: -360,
+    transformOrigin: "50% 50%",
+    duration: 14,
     ease: "none",
     repeat: -1
   });
