@@ -469,7 +469,7 @@
     .project-card svg {
         display: block;
         margin: auto;
- 
+    }
     .project-card__thumb {
       width: 100%;
       aspect-ratio: 4/3;
@@ -909,5 +909,55 @@
       <a href="https://x.com/priyaaamadhavan">Twitter</a>
     </div>
   </footer>
+  <script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // LEFT SIDE (services)
+  gsap.from(".hero__services .service-item", {
+    x: -80,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".hero__row",
+      start: "top 80%",
+      toggleActions: "play none none none"
+    }
+  });
+
+  // RIGHT SIDE (deliverables)
+  gsap.from(".hero__deliverables .deliverable-item", {
+    x: 80,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".hero__row",
+      start: "top 80%",
+      toggleActions: "play none none none"
+    }
+  });
+
+  // OPTIONAL: center text fade (nice polish)
+  gsap.from(".hero__bio p", {
+    opacity: 0,
+    y: 40,
+    duration: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".hero__row",
+      start: "top 85%"
+    }
+  });
+    gsap.to(".project-card svg", {
+  rotation: 360,
+  duration: 20,
+  ease: "linear",
+  repeat: -1
+});
+
+</script>
 </body>
 </html>
