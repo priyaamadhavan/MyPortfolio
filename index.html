@@ -1599,14 +1599,22 @@
   });
 
   // ========== PARALLAX ON HERO ==========
-  window.addEventListener('scroll', () => {
-    const hero = document.querySelector('.hero');
-    const scroll = window.scrollY;
-    if (scroll < window.innerHeight) {
-      hero.style.transform = `translateY(${scroll * 0.15}px)`;
-      hero.style.opacity = 1 - scroll / (window.innerHeight * 0.8);
+ window.addEventListener('scroll', () => {
+  const hero = document.querySelector('.hero');
+  const scroll = window.scrollY;
+
+  const fadeLimit = window.innerHeight * 0.3;
+
+  if (scroll < window.innerHeight) {
+    hero.style.transform = `translateY(${scroll * 0.15}px)`;
+
+    if (scroll < fadeLimit) {
+      hero.style.opacity = 1 - scroll / fadeLimit;
+    } else {
+      hero.style.opacity = 0.7; // stays visible
     }
-  });
+  }
+});
 
   // ========== TILT EFFECT ON PROJECT CARDS ==========
   document.querySelectorAll('.project-card').forEach(card => {
