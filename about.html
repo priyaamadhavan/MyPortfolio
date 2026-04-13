@@ -179,7 +179,35 @@
       height: 20px;
       color: var(--green);
     }
+    /* newly added css focus */
+    .focus-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  padding: 100px 60px;
+  overflow: hidden;
+}
 
+.focus-left,
+.focus-right {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.focus-center {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.point {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #666;
+  font-weight: 600;
+}
+    /* end */
     /* ═══════════════════════════════════════════════════════
        JOURNEY SECTION
     ═══════════════════════════════════════════════════════ */
@@ -579,76 +607,29 @@
         experiences at <br> <span class="accent">product scale.</span>
       </h1>
 
-      <div class="hero__row">
+      <section class="focus-section">
+  
+  <div class="focus-left">
+    <div class="point">PRODUCT DESIGN</div>
+    <div class="point">UX DESIGN</div>
+    <div class="point">USER RESEARCH</div>
+  </div>
 
-        <!-- Left: services -->
-        <div class="hero__services">
-          <div class="service-item">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
-                <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
-              </svg>
-            </div>
-            Product Design
-          </div>
-          <div class="service-item">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M3 12h1M20 12h1M12 3v1M12 20v1"/>
-              </svg>
-            </div>
-            UX Design
-          </div>
-          <div class="service-item">
-            <div class="service-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              </svg>
-            </div>
-            User Research
-          </div>
-        </div>
+  <div class="focus-center">
+    <h2>
+      My focus is on <span>blending clear strategy</span>,
+      thoughtful design, and user empathy
+      to craft experiences that <u>solve real problems.</u>
+    </h2>
+  </div>
 
-        <!-- Center: bio -->
-        <div class="hero__bio">
-          <p>
-            My focus is on <span class="highlight">blending<br>clear strategy</span>, thoughtful<br>
-            design, and user empathy<br>
-            to craft experiences that<br>
-            <span class="underline-deco">solve real problems.</span>
-          </p>
-        </div>
+  <div class="focus-right">
+    <div class="point">DESIGN SYSTEMS</div>
+    <div class="point">COMPETITOR ANALYSIS</div>
+    <div class="point">BRAND IDENTITY</div>
+  </div>
 
-        <!-- Right: deliverables -->
-        <div class="hero__deliverables">
-          <div class="deliverable-item">
-            Design Systems
-            <div class="deliverable-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-              </svg>
-            </div>
-          </div>
-          <div class="deliverable-item">
-            Competitor Analysis
-            <div class="deliverable-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-              </svg>
-            </div>
-          </div>
-          <div class="deliverable-item">
-            Brand Identity
-            <div class="deliverable-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-              </svg>
-            </div>
-          </div>
-        </div>
+</section>
 
       </div>
   </section>
@@ -874,6 +855,37 @@
       <a href="https://x.com/priyaaamadhavan">Twitter</a>
     </div>
   </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// LEFT side animation
+gsap.from(".focus-left .point", {
+  scrollTrigger: {
+    trigger: ".focus-section",
+    start: "top 70%",
+  },
+  x: -60,
+  opacity: 0,
+  duration: 0.8,
+  stagger: 0.2,
+  ease: "power3.out"
+});
+
+// RIGHT side animation
+gsap.from(".focus-right .point", {
+  scrollTrigger: {
+    trigger: ".focus-section",
+    start: "top 70%",
+  },
+  x: 60,
+  opacity: 0,
+  duration: 0.8,
+  stagger: 0.2,
+  ease: "power3.out"
+});
+</script>
 </body>
 </html>
