@@ -909,54 +909,92 @@
       <a href="https://x.com/priyaaamadhavan">Twitter</a>
     </div>
   </footer>
-  <script>
+ <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  // LEFT SIDE (services)
+  // LEFT side animation
   gsap.from(".hero__services .service-item", {
     x: -80,
     opacity: 0,
     duration: 0.8,
     stagger: 0.2,
-    ease: "power3.out",
     scrollTrigger: {
       trigger: ".hero__row",
-      start: "top 80%",
-      toggleActions: "play none none none"
+      start: "top 80%"
     }
   });
 
-  // RIGHT SIDE (deliverables)
+  // RIGHT side animation
   gsap.from(".hero__deliverables .deliverable-item", {
     x: 80,
     opacity: 0,
     duration: 0.8,
     stagger: 0.2,
-    ease: "power3.out",
     scrollTrigger: {
       trigger: ".hero__row",
-      start: "top 80%",
-      toggleActions: "play none none none"
+      start: "top 80%"
     }
   });
 
-  // OPTIONAL: center text fade (nice polish)
-  gsap.from(".hero__bio p", {
-    opacity: 0,
-    y: 40,
-    duration: 1,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: ".hero__row",
-      start: "top 85%"
-    }
+  // 🔥 Rotate ONLY the <g> inside SVG
+  gsap.to(".project-card svg g", {
+    rotation: 360,
+    transformOrigin: "50% 50%", // important!
+    duration: 20,
+    repeat: -1,
+    ease: "linear"
   });
     gsap.to(".project-card svg", {
-  rotation: 360,
-  duration: 20,
-  ease: "linear",
-  repeat: -1
-});
+      rotation: 360,
+      duration: 20,
+      ease: "linear",
+      repeat: -1
+    });
+   // JOURNEY HEADING
+  gsap.from(".journey__heading", {
+    y: 60,
+    opacity: 0,
+    duration: 1,
+    scrollTrigger: {
+      trigger: ".journey",
+      start: "top 80%"
+    }
+  });
+
+  // JOURNEY ITEMS (each block)
+  gsap.from(".journey__item", {
+    y: 80,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.3,
+    scrollTrigger: {
+      trigger: ".journey",
+      start: "top 75%"
+    }
+  });
+   // ALGO HEADING
+  gsap.from(".algo__heading, .algo__sub", {
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: ".algo",
+      start: "top 80%"
+    }
+  });
+
+  // ALGO CARDS
+  gsap.from(".algo__card", {
+    y: 60,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.25,
+    scrollTrigger: {
+      trigger: ".algo__cards",
+      start: "top 80%"
+    }
+  });
 
 </script>
 </body>
