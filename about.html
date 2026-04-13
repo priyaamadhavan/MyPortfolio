@@ -213,7 +213,7 @@
 
     /*  IMPORTANT: initial hidden state */
     .point {
-      opacity: 0;
+      /* opacity: 0; */
       transform: translateX(0);
       font-size: 12px;
       letter-spacing: 2px;
@@ -873,31 +873,45 @@
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// LEFT side animation
-gsap.from(".focus-left .point", {
-  scrollTrigger: {
-    trigger: ".focus-section",   // which section to watch
-    start: "top 30%",            // when to start animation
-    toggleActions: "play none none reverse"
+// LEFT
+gsap.fromTo(".focus-left .point",
+  {
+    x: -80,
+    opacity: 0
   },
-  x: -60,        // move from left
-  opacity: 0,    // fade in
-  duration: 0.8,
-  stagger: 0.2   // one by one animation
-});
+  {
+    x: 0,
+    opacity: 1,
+    duration: 0.8,
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: ".focus-section",
+      start: "top 40%",
+      toggleActions: "play none none reverse",
+      markers: true   // keep for debugging
+    }
+  }
+);
 
-// RIGHT side animation
-gsap.from(".focus-right .point", {
-  scrollTrigger: {
-    trigger: ".focus-section",
-    start: "top 30%",
-    toggleActions: "play none none reverse"
+// RIGHT
+gsap.fromTo(".focus-right .point",
+  {
+    x: 80,
+    opacity: 0
   },
-  x: 60,         // move from right
-  opacity: 0,
-  duration: 0.8,
-  stagger: 0.2
-});
+  {
+    x: 0,
+    opacity: 1,
+    duration: 0.8,
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: ".focus-section",
+      start: "top 40%",
+      toggleActions: "play none none reverse",
+      markers: true
+    }
+  }
+);
 </script>
 </body>
 </html>
