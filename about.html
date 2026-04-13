@@ -427,6 +427,7 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
+      padding: 32px;
     }
  
     .project-card__thumb {
@@ -773,9 +774,47 @@
  
         <!-- QA Touch -->
         <div class="project-card">
-          <div class="project-card__thumb">
-            <div class="blob"></div>
-          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 320 256" fill="none">
+<rect width="320" height="256" rx="32" fill="url(#paint0_linear_3201_5102)"/>
+<g opacity="0.8" filter="url(#filter0_dd_3201_5102)">
+<g clip-path="url(#clip0_3201_5102)">
+<rect x="110.705" y="52.0918" width="128" height="128" rx="32" transform="rotate(12 110.705 52.0918)" fill="#B2FE3F"/>
+<rect opacity="0.3" x="110.705" y="52.0918" width="128" height="128" transform="rotate(12 110.705 52.0918)" fill="url(#pattern0_3201_5102)"/>
+</g>
+</g>
+<rect x="104.256" y="91.7898" width="94" height="94" rx="31" transform="rotate(-12 104.256 91.7898)" stroke="#416600" stroke-opacity="0.2" stroke-width="2"/>
+<defs>
+<filter id="filter0_dd_3201_5102" x="64.0928" y="52.0918" width="191.815" height="191.815" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="6" operator="erode" in="SourceAlpha" result="effect1_dropShadow_3201_5102"/>
+<feOffset dy="8"/>
+<feGaussianBlur stdDeviation="5"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3201_5102"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="5" operator="erode" in="SourceAlpha" result="effect2_dropShadow_3201_5102"/>
+<feOffset dy="20"/>
+<feGaussianBlur stdDeviation="12.5"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="effect1_dropShadow_3201_5102" result="effect2_dropShadow_3201_5102"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_3201_5102" result="shape"/>
+</filter>
+<pattern id="pattern0_3201_5102" patternContentUnits="objectBoundingBox" width="0.523438" height="0.78125">
+<use xlink:href="#image0_3201_5102" transform="scale(0.0078125)"/>
+</pattern>
+<linearGradient id="paint0_linear_3201_5102" x1="35.122" y1="-28.0976" x2="284.878" y2="284.098" gradientUnits="userSpaceOnUse">
+<stop stop-color="#416600" stop-opacity="0.1"/>
+<stop offset="1" stop-color="#416600" stop-opacity="0"/>
+</linearGradient>
+<clipPath id="clip0_3201_5102">
+<rect x="110.705" y="52.0918" width="128" height="128" rx="32" transform="rotate(12 110.705 52.0918)" fill="white"/>
+</clipPath>
+<image id="image0_3201_5102" width="67" height="100" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABkCAMAAADqvX3PAAAAKlBMVEUAAADX19fX19fBwcHT09PX19fW1tbT09PW1tbV1dXOzs7Ozs7BwcHV1dX5uIg2AAAADnRSTlMAPQAKH0czAAApFAAAAHys1goAAAHwSURBVHja7ZfdcuMwCEb1GUIDcd//dZuk2n5rZzCKOzuzFzo3+XNOBAIHtQosxwi0XUw/jjh2qN1pVzV43FJwJIDLuq5tvaNmzxeEZI5wWP/p9v0gypgGYhGH8fL28yyM7ycOJkFlJW3tZDHhRdBjIO22JR6a1BGMgTAWopvr6BC1jSB1MDWyXYfvkpDlg4iiV83lITiuoXZL+U4/ltcNq2MhogaYBWMYjYU8HHfSRdTrCIOLYImemrfz8dMO6DlVGYyFMWz3tmuGY6GgO1ikXVM51JDXurBO0nyEcyPTnvOXvmyb0hzqfV64jUUYw47Re9CZe6EbeC+M39+TcfK/gTFZuxZgOSag7aMASwGkrQW1Y2lLwXRMx3RMx3T8Pw67FpSOcA5RCccOcTMNL05aRw7Fn2kizA7+1VNH6ENAOBgOxiIK888dHPVqh+Q/yeknzQfHkhx+nqyjT0QFzDUd2Skp53lp7PdFnEkYIhzQv/KRzJUV0QdDSON5+S14CEW0vqSTiAPWWDknCLsY0BZxnNP0L/Z9YQEO8yznXZ2yNwfgTu7rNFgj9aamvS9eZljMTNOeoybSGNwQkvZ+3XrCU07t4HmWSBjDLBzEwdSzhMYcRPRZNYmgdjA1FyahcKQIqpKZs8N0TMd0TMd0/BvHF8n9f8tHo7HcAAAAAElFTkSuQmCC"/>
+</defs>
+</svg>
           <div class="project-card__body">
             <div class="project-card__title">QA Touch</div>
             <div class="project-card__desc">Modern Test Management Tool redefining the testing lifecycle for global QA teams.</div>
