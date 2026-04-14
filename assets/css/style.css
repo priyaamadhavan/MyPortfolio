@@ -1234,6 +1234,7 @@ br{
     background: #f8f8f8 !important;
 }
 .process-section {
+    display: flex;
     justify-content: space-between;
     gap: 20px;
 }
