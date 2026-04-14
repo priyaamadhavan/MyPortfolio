@@ -921,7 +921,7 @@ figcaption {
     display: block;
     text-align: center;
     align-items: center;
-    max-width: 70%;
+    max-width: 100%;
 }
 .service-title span {
     display: inline-block;
@@ -1188,6 +1188,7 @@ br{
 }
 .box {
     width: 35%;
+    margin:auto;
 }
 .image-box01 {
     transform: rotate(-10deg); /* Adjust the degree value for the desired tilt angle */
