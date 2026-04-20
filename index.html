@@ -36,6 +36,18 @@
     }
 
     /* ── NAV ── */
+    .btn-open-work {
+      color: var(--green);
+      font-weight: 900;
+    }
+    .btn-oprn-work::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      display: inline-block;
+    }
     nav {
       display: flex;
       justify-content: space-between;
@@ -87,18 +99,6 @@
       font-weight: 600;
       text-decoration: none;
       transition: background 0.2s, transform 0.2s;
-    }
-    .btn-open-work {
-    color: var(--green);
-    font-weight: 900;
-    }
-    .btn-oprn-work::before {
-      content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--green);
-    display: inline-block;
     }
     .btn-resume:hover {
       background: #68a03a;
