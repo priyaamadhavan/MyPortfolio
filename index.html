@@ -88,7 +88,18 @@
       text-decoration: none;
       transition: background 0.2s, transform 0.2s;
     }
-
+    .btn-open-work {
+    color: var(--green);
+    font-weight: 900;
+    }
+    .btn-oprn-work::before {
+      content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    display: inline-block;
+    }
     .btn-resume:hover {
       background: #68a03a;
       transform: translateY(-1px);
