@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Best.ao — The Rewards-First Booking Engine</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+:root{
+  --bg:#f5f4f0;
+  --white:#ffffff;
+  --black:#111111;
+  --dark:#1c1c1c;
+  --text:#333333;
+  --muted:#666666;
+  --light:#999999;
+  --border:#e2e1dc;
+  --green:#3d7a4f;
+  --green-bg:#eaf2ec;
+  --green-light:#d4edd9;
+  --card:#ffffff;
+  --dark-card:#1e1e1e;
+  --yellow:#f0c040;
+  --orange:#e07a3a;
+  --font:'Space Grotesk',sans-serif;
+  --radius:12px;
+  --radius-sm:8px;
+}
+
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--black);
+  font-size:14px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── PAGE WRAPPER ── */
+.page{max-width:760px;margin:0 auto;padding:0 28px 100px;}
+
+/* ── TOP TAGS ── */
+.top-tags{
+  display:flex;gap:8px;justify-content:center;
+  padding:40px 0 28px;
+}
+.tag{
+  font-size:11px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;padding:5px 14px;border-radius:99px;
+  border:1.5px solid #ccc;color:var(--muted);background:transparent;
+}
+.tag.filled{background:var(--black);color:#fff;border-color:var(--black);}
+
+/* ── HERO ── */
+.hero{text-align:center;margin-bottom:10px;}
+.hero h1{
+  font-size:clamp(26px,4.5vw,40px);font-weight:700;
+  letter-spacing:-.5px;line-height:1.15;color:var(--black);
+  margin-bottom:8px;
+}
+.hero p{
+  font-size:13px;color:var(--muted);margin-bottom:32px;font-weight:400;
+}
+
+/* ── BOOKING HERO CARD ── */
+.booking-hero-card{
+  background:var(--white);border-radius:var(--radius);
+  box-shadow:0 2px 24px rgba(0,0,0,.08);
+  overflow:hidden;margin-bottom:48px;
+}
+.hotel-image-bar{
+  height:188px;width:100%;
+  background:linear-gradient(180deg,#87c5d8 0%,#5ca0be 35%,#3d85a6 55%,#c8a96e 55%,#b09050 70%,#8a6e38 100%);
+  position:relative;
+}
+.hotel-image-bar::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 50%,rgba(0,0,0,.15) 100%);
+}
+/* pool reflections */
+.hotel-image-bar::before{
+  content:'';position:absolute;
+  top:32%;left:10%;right:10%;height:20%;
+  background:rgba(255,255,255,.12);border-radius:4px;
+}
+.booking-card-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  padding:20px 24px 0;gap:20px;
+}
+.hotel-meta h3{font-size:15px;font-weight:700;margin-bottom:3px;}
+.hotel-meta .stars{color:var(--yellow);font-size:11px;letter-spacing:1px;margin-bottom:8px;}
+.hotel-meta .thumb-row{display:flex;gap:6px;margin-top:10px;}
+.thumb{width:54px;height:38px;border-radius:5px;background:var(--border);}
+.thumb:nth-child(1){background:linear-gradient(135deg,#87c5d8,#5ca0be);}
+.thumb:nth-child(2){background:linear-gradient(135deg,#e8d5b0,#c9a87c);}
+.thumb:nth-child(3){background:linear-gradient(135deg,#b8d8c0,#7ab88a);}
+.price-col{font-size:12px;}
+.pr{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:6px 0;border-bottom:1px solid var(--border);
+  color:var(--muted);
+}
+.pr:last-of-type{border-bottom:none;}
+.pr .lbl{display:flex;align-items:center;gap:6px;}
+.pr .val{font-weight:600;color:var(--black);}
+.dot-green{width:7px;height:7px;border-radius:50%;background:#3d7a4f;flex-shrink:0;}
+.dot-orange{width:7px;height:7px;border-radius:50%;background:#e07a3a;flex-shrink:0;}
+.booking-footer{
+  padding:14px 24px 18px;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid var(--border);margin-top:12px;
+}
+.booking-footer .total{font-size:22px;font-weight:700;}
+.booking-footer .total-sub{font-size:11px;color:var(--light);margin-bottom:1px;}
+.btn-book{
+  background:var(--black);color:#fff;
+  border:none;border-radius:8px;
+  padding:10px 22px;font-family:var(--font);font-size:13px;font-weight:600;
+  cursor:pointer;
+}
+
+/* ── CONTEXT GRID ── */
+.context-grid{
+  display:grid;grid-template-columns:200px 1fr;gap:32px;
+  margin-bottom:56px;align-items:start;
+}
+.context-left .cl-lbl{
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--light);margin-bottom:3px;
+}
+.context-left .cl-val{font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.5;}
+.context-right{
+  background:var(--green-bg);
+  border-left:3px solid var(--green);
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  padding:20px 22px;
+}
+.context-right p{font-size:13px;line-height:1.8;color:var(--black);}
+.context-right strong{font-weight:700;}
+
+/* ── SECTION LABEL ── */
+.sec-eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--light);margin-bottom:10px;
+}
+.sec-h{
+  font-size:clamp(20px,3vw,28px);font-weight:700;margin-bottom:14px;
+  letter-spacing:-.3px;line-height:1.2;
+}
+
+/* ── PRODUCT INSIGHT ── */
+.product-insight{margin-bottom:56px;}
+.product-insight p{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:24px;}
+
+/* ── DARK SOLO CARD ── */
+.solo-card{
+  background:var(--dark-card);border-radius:var(--radius);
+  padding:28px 30px 26px;margin-bottom:56px;
+}
+.solo-card .eyebrow{font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#555;margin-bottom:10px;}
+.solo-card h2{
+  font-size:clamp(22px,3.5vw,34px);font-weight:700;color:#fff;
+  margin-bottom:28px;letter-spacing:-.4px;
+}
+.solo-toolbar{
+  display:flex;gap:2px;background:#2a2a2a;border-radius:var(--radius-sm);
+  padding:5px;width:fit-content;
+}
+.solo-tool{
+  width:54px;height:50px;border-radius:6px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+}
+.solo-tool.active{background:#3a3a3a;}
+.solo-tool-ico{font-size:18px;}
+.solo-tool-lbl{font-size:9px;color:#666;text-transform:uppercase;letter-spacing:.04em;}
+
+/* ── SYSTEM THINKING ── */
+.system-thinking{margin-bottom:56px;}
+.st-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;}
+.st-card{
+  background:var(--white);border-radius:var(--radius);
+  border:1px solid var(--border);padding:20px;
+}
+.st-card .ico{font-size:20px;margin-bottom:8px;}
+.st-card h4{font-size:13px;font-weight:700;margin-bottom:6px;}
+.st-card p{font-size:12px;color:var(--muted);line-height:1.65;}
+
+/* ── DESIGN CHALLENGE ── */
+.design-challenge{margin-bottom:56px;}
+.dc-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;}
+.dc-header .tag-right{font-size:10px;color:var(--light);letter-spacing:.05em;text-transform:uppercase;}
+.dc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.dc-card{
+  background:var(--white);border-radius:var(--radius);
+  border:1px solid var(--border);padding:18px 16px;
+}
+.dc-card h4{font-size:12px;font-weight:700;margin-bottom:7px;}
+.dc-card p{font-size:11.5px;color:var(--muted);line-height:1.65;}
+
+/* ── MY ROLE ── */
+.my-role{margin-bottom:56px;}
+.role-split{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:10px;}
+.role-body{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:20px;}
+.role-list{list-style:none;}
+.role-list li{
+  font-size:12px;color:var(--muted);padding:9px 0;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px;
+}
+.role-list li::before{content:'→';color:var(--border);font-size:11px;}
+
+/* ── DIVIDER ── */
+hr.rule{border:none;border-top:1px solid var(--border);margin:56px 0;}
+
+/* ── VALUE TIMELINE ── */
+.value-timeline{margin-bottom:56px;}
+.vt-center{text-align:center;margin-bottom:24px;}
+.vt-center .sec-eyebrow{justify-content:center;}
+.vt-desc{font-size:13px;color:var(--muted);line-height:1.8;text-align:center;margin-bottom:24px;}
+.vt-card{
+  background:var(--white);border-radius:var(--radius);
+  box-shadow:0 2px 20px rgba(0,0,0,.08);overflow:hidden;
+}
+.vt-split{display:grid;grid-template-columns:1fr 1fr;}
+.vt-left{padding:20px 22px;border-right:1px solid var(--border);}
+.vt-left h4{font-size:14px;font-weight:700;margin-bottom:2px;}
+.vt-left .sub{font-size:11px;color:var(--light);margin-bottom:14px;}
+.vt-price-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:8px 0;border-bottom:1px solid var(--border);
+  font-size:12px;color:var(--muted);
+}
+.vt-price-row:last-of-type{border-bottom:none;}
+.vt-price-row .v{font-weight:700;color:var(--black);}
+.vt-right{padding:20px 22px;}
+.vt-right h4{font-size:12px;font-weight:700;margin-bottom:10px;}
+.vt-right p{font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:10px;}
+.vt-quote{
+  margin-top:14px;border-top:1px solid var(--border);padding-top:14px;
+  font-style:italic;font-size:13px;font-weight:600;color:var(--black);line-height:1.5;
+}
+.vt-footer{
+  padding:14px 22px;background:var(--black);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.vt-total{font-size:22px;font-weight:700;color:#fff;}
+.vt-btn{
+  background:#fff;color:var(--black);border:none;border-radius:6px;
+  padding:8px 18px;font-family:var(--font);font-size:12px;font-weight:700;cursor:pointer;
+}
+
+/* ── BEHAVIORAL ECON ── */
+.behavioral{margin-bottom:56px;}
+.behavioral .body{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:22px;}
+.beh-options{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+.beh-opt{
+  background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:13px 16px;display:flex;align-items:center;gap:12px;
+}
+.beh-opt.selected{border-color:var(--black);background:#fafaf8;}
+.beh-radio{
+  width:17px;height:17px;border-radius:50%;border:2px solid #ccc;flex-shrink:0;
+}
+.beh-opt.selected .beh-radio{
+  background:var(--black);border-color:var(--black);
+  box-shadow:inset 0 0 0 3px #fff;
+}
+.beh-info{flex:1;}
+.beh-info .bname{font-size:13px;font-weight:600;margin-bottom:2px;}
+.beh-info .bnote{font-size:11px;color:var(--light);}
+.beh-price{font-size:15px;font-weight:700;}
+.outcome-banner{
+  background:var(--green-bg);border-radius:var(--radius-sm);
+  padding:13px 16px;font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:12px;
+}
+.outcome-banner strong{color:var(--green);font-weight:700;}
+.metrics{display:flex;gap:8px;flex-wrap:wrap;}
+.metric-pill{
+  background:var(--white);border:1px solid var(--border);border-radius:99px;
+  padding:5px 13px;font-size:12px;font-weight:600;
+}
+
+/* ── TOP FUNNEL ── */
+.top-funnel{margin-bottom:56px;}
+.top-funnel .body{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:22px;}
+.funnel-screens{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px;}
+.fscrn{
+  background:var(--white);border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--border);
+}
+.fscrn-top{height:90px;}
+.fscrn-top-1{background:linear-gradient(135deg,#a8d8ea,#5a9ab0);}
+.fscrn-top-2{background:linear-gradient(135deg,#e8d5b0,#c9a87c);}
+.fscrn-top-3{background:linear-gradient(135deg,#b8d8c0,#5a9e72);}
+.fscrn-bottom{padding:10px 12px;}
+.fline{height:6px;border-radius:3px;background:var(--border);margin-bottom:5px;}
+.fline.short{width:60%;}
+.funnel-caption{text-align:center;font-size:11px;color:var(--light);font-style:italic;}
+
+/* ── ARCH SCALABILITY ── */
+.arch{margin-bottom:56px;}
+.arch .body{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:22px;}
+.arch-window{
+  background:var(--white);border-radius:var(--radius);
+  box-shadow:0 2px 20px rgba(0,0,0,.09);overflow:hidden;
+  border:1px solid var(--border);
+}
+.arch-titlebar{
+  background:#f0efeb;padding:10px 16px;
+  display:flex;gap:6px;align-items:center;border-bottom:1px solid var(--border);
+}
+.tl{width:10px;height:10px;border-radius:50%;}
+.arch-body{display:grid;grid-template-columns:170px 1fr;}
+.arch-sidebar{
+  background:#f8f7f4;border-right:1px solid var(--border);padding:12px 10px;
+}
+.arch-nav-item{
+  font-size:11px;color:var(--muted);padding:6px 10px;border-radius:5px;margin-bottom:2px;
+}
+.arch-nav-item.active{background:var(--black);color:#fff;font-weight:600;}
+.arch-main{padding:16px 18px;}
+.arch-th{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--light);border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:4px;
+}
+.arch-tr{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  font-size:11px;color:var(--muted);padding:7px 0;border-bottom:1px solid var(--border);
+  align-items:center;
+}
+.arch-tr:last-child{border-bottom:none;}
+.arch-tr .cname{font-weight:600;color:var(--black);}
+.schip{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px;
+}
+.s-live{background:#e6f4ec;color:var(--green);}
+.s-beta{background:#fdf3e3;color:#c8882a;}
+.s-dev{background:#f0f0f0;color:var(--light);}
+
+/* ── WHERE IT STANDS ── */
+.where{margin-bottom:56px;}
+.where-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:20px;}
+.where-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--light);margin-bottom:10px;}
+.where-col p{font-size:12.5px;color:var(--muted);line-height:1.8;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:620px){
+  .context-grid,.st-grid,.dc-grid,.role-split,.vt-split,.where-grid,.funnel-screens{grid-template-columns:1fr;}
+  .booking-card-inner{grid-template-columns:1fr;}
+  .arch-body{grid-template-columns:1fr;}
+  .arch-sidebar{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOP TAGS -->
+  <div class="top-tags">
+    <span class="tag filled">UX Design</span>
+    <span class="tag">Product</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>The rewards-first booking engine</h1>
+    <p>Designing a booking experience where users see less value, not just price.</p>
+  </div>
+
+  <!-- BOOKING HERO CARD -->
+  <div class="booking-hero-card">
+    <div class="hotel-image-bar"></div>
+    <div class="booking-card-inner">
+      <div class="hotel-meta">
+        <h3>Azure Bay Resort</h3>
+        <div class="stars">★★★★☆</div>
+        <div style="font-size:11px;color:var(--light);">Bali, Indonesia · 5 nights</div>
+        <div class="thumb-row">
+          <div class="thumb"></div>
+          <div class="thumb"></div>
+          <div class="thumb"></div>
+        </div>
+      </div>
+      <div class="price-col">
+        <div class="pr">
+          <span class="lbl">Base Rate</span>
+          <span class="val">₹1,176.34</span>
+        </div>
+        <div class="pr">
+          <span class="lbl"><span class="dot-green"></span>Cashback</span>
+          <span class="val" style="color:#3d7a4f;">–₹117.60</span>
+        </div>
+        <div class="pr">
+          <span class="lbl"><span class="dot-orange"></span>Tax &amp; Fees</span>
+          <span class="val">+₹191.28</span>
+        </div>
+        <div class="pr">
+          <span class="lbl">Coin Reward</span>
+          <span class="val" style="color:#e07a3a;">+450 🪙</span>
+        </div>
+      </div>
+    </div>
+    <div class="booking-footer">
+      <div>
+        <div class="total-sub">Total after cashback</div>
+        <div class="total">₹1,250.02</div>
+      </div>
+      <button class="btn-book">Book Now</button>
+    </div>
+  </div>
+
+  <!-- CONTEXT SECTION -->
+  <div class="context-grid">
+    <div class="context-left">
+      <div class="cl-lbl">Context</div>
+      <div class="cl-val">B2C product · 1 designer</div>
+      <div class="cl-lbl">Industry</div>
+      <div class="cl-val">Travel &amp; Hospitality</div>
+      <div class="cl-lbl">Role</div>
+      <div class="cl-val">Product Design &amp; Strategy</div>
+      <div class="cl-lbl">Tools Used</div>
+      <div class="cl-val">Figma · FigJam · Notion<br>Framer · Maze · Analytics</div>
+      <div class="cl-val" style="margin-top:8px;font-size:11px;">B2C Travel Booking / Hospitality</div>
+    </div>
+    <div class="context-right">
+      <p><strong>Best.ao is a travel booking platform for luxury boutique hotels</strong> that integrates dynamic pricing with cashback and coin-based rewards, enabling users to understand both their actual cost and rewards directly within the booking flow.</p>
+    </div>
+  </div>
+
+  <!-- PRODUCT INSIGHT -->
+  <div class="product-insight">
+    <div class="sec-eyebrow">Product Insight</div>
+    <p>Booking platforms often present incomplete pricing, with additional fees revealed only at the end in the payment step. This creates a gap between perceived and actual costs, eroding user trust and increasing decision fatigue. At the same time, reward systems like purchase amounts are typically disconnected from pricing, making it difficult for users to understand the true value of a booking.</p>
+  </div>
+
+  <!-- SOLO CARD -->
+  <div class="solo-card">
+    <div class="eyebrow">Product &amp; Design</div>
+    <h2>End-to-end solo designer.</h2>
+    <div class="solo-toolbar">
+      <div class="solo-tool active">
+        <div class="solo-tool-ico">⚡</div>
+        <div class="solo-tool-lbl">Strategy</div>
+      </div>
+      <div class="solo-tool">
+        <div class="solo-tool-ico">🔍</div>
+        <div class="solo-tool-lbl">Research</div>
+      </div>
+      <div class="solo-tool">
+        <div class="solo-tool-ico">✦</div>
+        <div class="solo-tool-lbl">Design</div>
+      </div>
+      <div class="solo-tool">
+        <div class="solo-tool-ico">↗</div>
+        <div class="solo-tool-lbl">Build</div>
+      </div>
+      <div class="solo-tool">
+        <div class="solo-tool-ico">💬</div>
+        <div class="solo-tool-lbl">Test</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYSTEM THINKING -->
+  <div class="system-thinking">
+    <div class="sec-eyebrow">System Thinking</div>
+    <div class="st-grid">
+      <div class="st-card">
+        <div class="ico">🔍</div>
+        <h4>User-Driven Search</h4>
+        <p>Travelers begin with vague aspirations — "beachfront getaway" — so search surfaces curated recommendations filtered by traveler intent rather than just destination.</p>
+      </div>
+      <div class="st-card">
+        <div class="ico">💰</div>
+        <h4>Wallet</h4>
+        <p>An integrated in-app wallet tracks cashback accrual and coin balances, giving users tangible visibility into their accumulated savings across every booking.</p>
+      </div>
+      <div class="st-card">
+        <div class="ico">🔄</div>
+        <h4>Reward Loop</h4>
+        <p>Booking earns coins; coins are redeemable on future stays, forming a retention loop that rewards loyalty and encourages repeat bookings at no extra cognitive cost.</p>
+      </div>
+      <div class="st-card">
+        <div class="ico">⚙️</div>
+        <h4>Pricing Engine</h4>
+        <p>Real-time dynamic pricing blends base room rates, cashback percentages, taxes, and coin valuations into a single transparent "true cost" figure shown upfront.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESIGN CHALLENGE -->
+  <div class="design-challenge">
+    <div class="dc-header">
+      <div class="sec-eyebrow" style="margin-bottom:0;">Design Challenge</div>
+      <div class="tag-right">Three Key Tensions</div>
+    </div>
+    <div class="dc-grid">
+      <div class="dc-card">
+        <h4>Information Density</h4>
+        <p>Travel aggregators present information across dozens of parameters. Users experience decision paralysis when facing too many variables at once.</p>
+      </div>
+      <div class="dc-card">
+        <h4>Decision Confidence</h4>
+        <p>It is important that users feel confident about their decision — unclear cashback rules or hidden fees undermine trust and result in booking abandonment.</p>
+      </div>
+      <div class="dc-card">
+        <h4>Flow Consistency</h4>
+        <p>Balancing information richness with flow consistency across multiple booking stages — search, detail, payment — without losing context or introducing friction.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MY ROLE -->
+  <div class="my-role">
+    <div class="sec-eyebrow">Feature 1</div>
+    <div class="sec-h">My Role &amp; Ownership</div>
+    <p class="role-body">Led the end-to-end design of this feature across discovery, wireframing, and prototyping. I was deeply involved in product decisions throughout — often bridging the gap between design thinking and business priorities, always keeping the user at the centre.</p>
+    <div class="role-split">
+      <ul class="role-list">
+        <li>End-to-End UX Strategy</li>
+        <li>Competitive Design Positioning</li>
+      </ul>
+      <ul class="role-list">
+        <li>Interaction Design &amp; Prototyping</li>
+        <li>Stakeholder &amp; Dev Collaboration</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="rule"/>
+
+  <!-- VALUE TIMELINE -->
+  <div class="value-timeline">
+    <div class="vt-center">
+      <div class="sec-eyebrow">Feature 2</div>
+      <div class="sec-h">The Value Timeline</div>
+    </div>
+    <p class="vt-desc">An experiment in radically transparent pricing — where the full breakdown, cashback, and coins are surfaced before the user commits. We tested whether showing more detail earlier increased trust and conversion.</p>
+    <div class="vt-card">
+      <div class="vt-split">
+        <div class="vt-left">
+          <h4>Azure Bay Resort</h4>
+          <div class="sub">Bali · 5 nights · 2 guests</div>
+          <div class="vt-price-row">
+            <span>Base Price</span><span class="v">₹1,176.34</span>
+          </div>
+          <div class="vt-price-row">
+            <span>Cashback</span><span class="v" style="color:#3d7a4f;">–₹117.60</span>
+          </div>
+          <div class="vt-price-row">
+            <span>Tax &amp; Fees</span><span class="v">+₹191.28</span>
+          </div>
+          <div class="vt-price-row">
+            <span>Coin Reward</span><span class="v" style="color:#e07a3a;">+450 🪙</span>
+          </div>
+        </div>
+        <div class="vt-right">
+          <h4>Statistical Detail</h4>
+          <p>Price breakdowns surfaced upfront produced a measurable drop in checkout abandonment, because users no longer discovered unexpected fees at the final step.</p>
+          <p>The coin reward visibility increased repeat-booking intent by giving users a concrete reason to return — not just a vague promise of "rewards".</p>
+          <div class="vt-quote">"The breakdown isn't a distraction. It's the pitch."</div>
+        </div>
+      </div>
+      <div class="vt-footer">
+        <div class="vt-total">₹1,250.02</div>
+        <button class="vt-btn">Book Now</button>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule"/>
+
+  <!-- BEHAVIORAL ECONOMICS -->
+  <div class="behavioral">
+    <div class="sec-eyebrow">Feature 3</div>
+    <div class="sec-h">Leveraging Behavioral Economics</div>
+    <p class="body">Users anchor on the first price they see — a well-established phenomenon. Non-refundable rates felt like losses off the standard price. By surfacing refundable and non-refundable options side by side with the savings differential clearly labelled, the anchoring effect drove users to the middle option — partially refundable — which had the highest margin for the platform.</p>
+    <div class="beh-options">
+      <div class="beh-opt">
+        <div class="beh-radio"></div>
+        <div class="beh-info">
+          <div class="bname">Non-Refundable</div>
+          <div class="bnote">Lowest price · No changes allowed</div>
+        </div>
+        <div class="beh-price">₹1,060</div>
+      </div>
+      <div class="beh-opt selected">
+        <div class="beh-radio"></div>
+        <div class="beh-info">
+          <div class="bname">50% Refundable</div>
+          <div class="bnote">Save ₹240 vs fully refundable · Cancel before 48 hrs</div>
+        </div>
+        <div class="beh-price">₹1,260</div>
+      </div>
+      <div class="beh-opt">
+        <div class="beh-radio"></div>
+        <div class="beh-info">
+          <div class="bname">Fully Refundable</div>
+          <div class="bnote">Full flexibility · Cancel anytime</div>
+        </div>
+        <div class="beh-price">₹1,500</div>
+      </div>
+    </div>
+    <div class="outcome-banner">
+      <strong>The Outcome:</strong> The 50% refundable option accounted for 61% of all bookings within 3 weeks of launch — up from 34% when displayed without anchoring context.
+    </div>
+    <div class="metrics">
+      <div class="metric-pill">↑ 61% conversion</div>
+      <div class="metric-pill">↓ Abandonment –28%</div>
+      <div class="metric-pill">↑ Margin per booking</div>
+    </div>
+  </div>
+
+  <hr class="rule"/>
+
+  <!-- TOP FUNNEL -->
+  <div class="top-funnel">
+    <div class="sec-eyebrow">Feature 4</div>
+    <div class="sec-h">Top-of-Funnel Acquisition</div>
+    <p class="body">We developed a programmatic SEO framework to capture high-intent traffic. By pairing dynamically-generated "Trending Stays" landing pages with curated gem pages, we created a scalable acquisition engine that bridges initial discovery into a warm session in the booking application.</p>
+    <div class="funnel-screens">
+      <div class="fscrn"><div class="fscrn-top fscrn-top-1"></div><div class="fscrn-bottom"><div class="fline"></div><div class="fline"></div><div class="fline short"></div></div></div>
+      <div class="fscrn"><div class="fscrn-top fscrn-top-2"></div><div class="fscrn-bottom"><div class="fline"></div><div class="fline"></div><div class="fline short"></div></div></div>
+      <div class="fscrn"><div class="fscrn-top fscrn-top-3"></div><div class="fscrn-bottom"><div class="fline"></div><div class="fline"></div><div class="fline short"></div></div></div>
+    </div>
+    <div class="funnel-caption">Content-led pages → Booking intent → Warm app entry</div>
+  </div>
+
+  <!-- ARCH SCALABILITY -->
+  <div class="arch">
+    <div class="sec-eyebrow">Architecture</div>
+    <div class="sec-h">Architectural Scalability</div>
+    <p class="body">Designing for scale means designing for the team too. The component library and design tokens used across the platform were structured to allow engineers and future designers to build new pages without renegotiating patterns from scratch.</p>
+    <div class="arch-window">
+      <div class="arch-titlebar">
+        <div class="tl" style="background:#ff5f57;"></div>
+        <div class="tl" style="background:#febc2e;"></div>
+        <div class="tl" style="background:#28c840;"></div>
+      </div>
+      <div class="arch-body">
+        <div class="arch-sidebar">
+          <div class="arch-nav-item active">Components</div>
+          <div class="arch-nav-item">Tokens</div>
+          <div class="arch-nav-item">Pages</div>
+          <div class="arch-nav-item">Flows</div>
+          <div class="arch-nav-item">Icons</div>
+          <div class="arch-nav-item">Patterns</div>
+        </div>
+        <div class="arch-main">
+          <div class="arch-th">
+            <span>Component</span><span>Version</span><span>Status</span><span>Usage</span>
+          </div>
+          <div class="arch-tr">
+            <span class="cname">BookingCard</span><span>v2.3</span>
+            <span><span class="schip s-live">● Live</span></span><span>12 pages</span>
+          </div>
+          <div class="arch-tr">
+            <span class="cname">PriceBreakdown</span><span>v1.8</span>
+            <span><span class="schip s-live">● Live</span></span><span>8 pages</span>
+          </div>
+          <div class="arch-tr">
+            <span class="cname">RewardBadge</span><span>v1.2</span>
+            <span><span class="schip s-beta">● Beta</span></span><span>5 pages</span>
+          </div>
+          <div class="arch-tr">
+            <span class="cname">FilterPanel</span><span>v3.0</span>
+            <span><span class="schip s-live">● Live</span></span><span>4 pages</span>
+          </div>
+          <div class="arch-tr">
+            <span class="cname">WalletWidget</span><span>v0.9</span>
+            <span><span class="schip s-dev">● Dev</span></span><span>2 pages</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHERE IT STANDS -->
+  <div class="where">
+    <div class="sec-eyebrow">Outcome</div>
+    <div class="sec-h">Where it stands.</div>
+    <div class="where-grid">
+      <div class="where-col">
+        <h4>The Numbers</h4>
+        <p>Best.ao is a live B2C product. All designs — the hotel detail view, the checkout flow, the reward breakdown — have been implemented and shipped to real users, with measurable impact on conversion and dwell time across the booking funnel.</p>
+      </div>
+      <div class="where-col">
+        <h4>What's Next</h4>
+        <p>We are expanding the coin system to include tier-based loyalty rewards. Future iterations will explore how predictive pricing nudges — surfaced before search — can guide users toward higher-margin stays without undermining their sense of agency in the decision.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>
