@@ -1,444 +1,412 @@
 <!DOCTYPE html>
 
-<html class="scroll-smooth" lang="en"><head>
+<html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<title>Designing a Dynamic Homepage Builder for Healthcare | Alex Carter</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "on-error": "#ffefec",
-                    "inverse-on-surface": "#9b9e9a",
-                    "surface": "#f5f7f3",
-                    "on-primary-container": "#3c5f00",
-                    "on-error-container": "#520c00",
-                    "surface-container": "#e6e9e5",
-                    "secondary-fixed-dim": "#b3e1a2",
-                    "inverse-surface": "#0c0f0d",
-                    "on-secondary": "#d3ffc2",
-                    "outline-variant": "#abaeaa",
-                    "primary-fixed": "#b2fe3f",
-                    "on-tertiary-container": "#636262",
-                    "secondary": "#3d6533",
-                    "surface-container-low": "#eff1ed",
-                    "surface-variant": "#daded9",
-                    "secondary-container": "#c0efaf",
-                    "primary-container": "#b2fe3f",
-                    "primary-dim": "#385900",
-                    "on-primary": "#daffa5",
-                    "on-tertiary-fixed-variant": "#6e6d6d",
-                    "on-surface": "#2c2f2d",
-                    "tertiary-fixed-dim": "#f3f0ef",
-                    "secondary-dim": "#315928",
-                    "on-primary-fixed": "#2e4b00",
-                    "on-secondary-fixed": "#214819",
-                    "on-background": "#2c2f2d",
-                    "tertiary-container": "#ffffff",
-                    "error": "#b02500",
-                    "tertiary-fixed": "#ffffff",
-                    "outline": "#747874",
-                    "tertiary": "#5c5b5b",
-                    "background": "#f5f7f3",
-                    "primary-fixed-dim": "#a5ef2f",
-                    "error-container": "#f95630",
-                    "on-tertiary-fixed": "#515050",
-                    "on-secondary-container": "#335b2a",
-                    "surface-dim": "#d1d6d1",
-                    "tertiary-dim": "#504f4f",
-                    "surface-container-lowest": "#ffffff",
-                    "on-tertiary": "#f5f2f1",
-                    "on-secondary-fixed-variant": "#3d6533",
-                    "on-surface-variant": "#595c59",
-                    "surface-container-highest": "#daded9",
-                    "error-dim": "#b92902",
-                    "surface-container-high": "#e0e3df",
-                    "on-primary-fixed-variant": "#446a00",
-                    "primary": "#416600",
-                    "surface-tint": "#416600",
-                    "secondary-fixed": "#c0efaf",
-                    "inverse-primary": "#b2fe3f",
-                    "surface-bright": "#f5f7f3"
-            },
-            "borderRadius": {
-                    "DEFAULT": "1rem",
-                    "lg": "2rem",
-                    "xl": "3rem",
-                    "full": "9999px"
-            },
-            "fontFamily": {
-                    "headline": ["Space Grotesk"],
-                    "display": ["Space Grotesk"],
-                    "body": ["Manrope"],
-                    "label": ["Manrope"]
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#b9ac64",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e5e2e1",
+                        "on-secondary-container": "#646467",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#4b444f",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-surface": "#313030",
+                        "secondary-container": "#e3e2e6",
+                        "tertiary-fixed": "#f2e396",
+                        "tertiary-fixed-dim": "#d5c77c",
+                        "on-background": "#1c1b1b",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1b1b1e",
+                        "on-secondary-fixed-variant": "#46464a",
+                        "inverse-primary": "#e1b6ff",
+                        "primary": "#3a1555",
+                        "surface-dim": "#dcd9d9",
+                        "surface-tint": "#744e91",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1c1b1b",
+                        "surface-container-high": "#eae7e7",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#cec3d0",
+                        "surface-container-low": "#f6f3f2",
+                        "primary-container": "#512d6d",
+                        "primary-fixed": "#f2daff",
+                        "on-tertiary-container": "#483f01",
+                        "secondary-fixed": "#e3e2e6",
+                        "outline": "#7d7480",
+                        "on-primary-container": "#c298e0",
+                        "on-tertiary-fixed-variant": "#504707",
+                        "tertiary": "#695f1f",
+                        "primary-fixed-dim": "#e1b6ff",
+                        "on-primary-fixed-variant": "#5b3777",
+                        "surface": "#fcf9f8",
+                        "on-tertiary-fixed": "#201c00",
+                        "inverse-on-surface": "#f3f0ef",
+                        "background": "#fcf9f8",
+                        "on-primary-fixed": "#2c0548",
+                        "surface-container": "#f0eded",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#c7c6ca",
+                        "secondary": "#5e5e61"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-gap": "24px",
+                        "section-padding": "128px",
+                        "gutter": "32px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Space Grotesk"],
+                        "body-main": ["Manrope"],
+                        "display": ["Space Grotesk"],
+                        "body-lg": ["Manrope"],
+                        "h3": ["Space Grotesk"],
+                        "h2": ["Space Grotesk"],
+                        "label-caps": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-main": ["16px", {"lineHeight": "1.7", "letterSpacing": "0", "fontWeight": "400"}],
+                        "display": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.8", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "500"}],
+                        "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}]
+                    }
+                }
             }
-          },
-        },
-      }
+        }
     </script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .editorial-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1.5rem;
-        }
-        @media (max-width: 768px) {
-            .editorial-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-        }
-        .bento-hover:hover {
-            transform: scale(1.02);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
+        body { background-color: #fcf9f8; }
+        .case-study-max { max-width: 720px; margin-left: auto; margin-right: auto; }
+        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+        .callout-bar { border-left: 4px solid #3a1555; background-color: #f9f7fb; }
+        .shadow-ambient { shadow-sm shadow-purple-500/5; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
     </style>
 </head>
-<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl shadow-[0px_12px_40px_rgba(44,47,45,0.04)] h-20 flex justify-between items-center px-8 max-w-screen-2xl left-1/2 -translate-x-1/2">
-<div class="text-2xl font-bold tracking-tighter text-zinc-900 dark:text-white font-['Space_Grotesk']">NH Connect</div>
-<div class="hidden md:flex items-center space-x-8">
-<a class="text-[#416600] dark:text-[#b2fe3f] relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-[#b2fe3f] after:rounded-full font-['Space_Grotesk'] font-bold tracking-tight transition-all duration-300" href="#">Case Studies</a>
-<a class="text-zinc-500 dark:text-zinc-400 font-medium font-['Space_Grotesk'] tracking-tight hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300" href="#">Ecosystem</a>
-<a class="text-zinc-500 dark:text-zinc-400 font-medium font-['Space_Grotesk'] tracking-tight hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300" href="#">Administration</a>
-<a class="text-zinc-500 dark:text-zinc-400 font-medium font-['Space_Grotesk'] tracking-tight hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300" href="#">Sustainability</a>
-<a class="text-zinc-500 dark:text-zinc-400 font-medium font-['Space_Grotesk'] tracking-tight hover:text-zinc-900 dark:hover:text-zinc-100 transition-all duration-300" href="#">Archive</a>
+<body class="font-body-main text-on-background selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-gray-100 shadow-sm shadow-purple-500/5">
+<div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+<div class="text-xl font-bold tracking-tighter text-purple-900 font-display">ALEX CARTER</div>
+<div class="hidden md:flex items-center gap-8 font-space-grotesk tracking-tight font-medium">
+<a class="text-purple-900 border-b-2 border-purple-900 pb-1" href="#">Portfolio</a>
+<a class="text-gray-500 hover:text-purple-700 transition-colors" href="#">About</a>
+<a class="text-gray-500 hover:text-purple-700 transition-colors" href="#">Contact</a>
+<button class="bg-primary text-white px-6 py-2 rounded-full font-bold hover:opacity-90 transition-opacity">Resume</button>
 </div>
-<div class="flex items-center space-x-4">
-<span class="material-symbols-outlined text-on-surface-variant hover:scale-105 transition-transform cursor-pointer">notifications</span>
-<span class="material-symbols-outlined text-on-surface-variant hover:scale-105 transition-transform cursor-pointer">account_circle</span>
 </div>
 </nav>
-<main class="pt-32 px-6 md:px-12 max-w-screen-2xl mx-auto overflow-x-hidden">
+<main class="pt-20">
 <!-- Hero Section -->
-<section class="mb-24">
-<div class="flex flex-col md:flex-row items-end justify-between mb-12 gap-8">
-<div class="max-w-4xl">
-<h1 class="text-[3.5rem] leading-[1.1] font-bold tracking-tight font-display text-on-surface mb-6">
-                        Novant Health: Corporate <br/>
-<span class="text-primary italic font-light">Administration System</span> &amp; <br/>
-                        Digital Ecosystem
-                    </h1>
+<section class="py-section-padding px-8 bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto text-center">
+<div class="flex justify-center gap-3 mb-8">
+<span class="px-4 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed text-label-caps uppercase">Healthcare</span>
+<span class="px-4 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-label-caps uppercase">Internal Tool</span>
+<span class="px-4 py-1.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-label-caps uppercase">System Design</span>
 </div>
-<div class="flex flex-col items-start md:items-end gap-2 text-right">
-<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold tracking-wider uppercase">Case Study 2024</span>
-<p class="text-on-surface-variant font-medium">Internal Corporate Platform</p>
+<h1 class="font-display text-display text-primary mb-6 max-w-4xl mx-auto">Designing a Dynamic Homepage Builder for Healthcare</h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl mx-auto mb-16">Enabling non-technical teams to control mobile app experiences at scale across a major hospital network.</p>
+<div class="relative w-full aspect-[16/9] rounded-xl overflow-hidden shadow-2xl border border-outline-variant">
+<img alt="Hero Mockup" class="w-full h-full object-cover" data-alt="Modern desktop software interface showing a drag-and-drop dashboard with healthcare metrics and mobile app preview layout on a clean white desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMq52BvG_KvGqYbu41qMmj4xwIepruys-DFbyI0sTZEkVYlsTZtLw9CWDzZJ_RiWBaw94c0PbfavlfT3rB5LNABpf73NV-Dc5UmD0fxolj4tYdsIe_dPbfsdOzj_oerFGugxF7JhKipegMIBXSPj80o3yQHm5aPGzB7W8jpHul0jFEjh_psT87I9tAAQhhFyhs2kTI9eJrYJUDT3rHi9TnR4ZzYLzpTQvzU_fNKDpvNLNmIPReIfp15izx3CVColX3BnzE9rLd_msJ"/>
 </div>
 </div>
-<!-- Meta Bento -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<div class="md:col-span-2 bg-surface-container-low rounded-xl p-8 flex flex-col justify-between min-h-[300px] relative overflow-hidden group">
+</section>
+<!-- SECTION 2: ABOUT NH CONNECT -->
+<section class="bg-surface-container-low py-32">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div class="order-2 lg:order-1 relative">
+<div class="rounded-xl overflow-hidden editorial-shadow aspect-video">
+<img alt="NH Connect Admin System" class="w-full h-full object-cover" data-alt="High-end dashboard UI showing complex medical data analytics and content management features with a clean minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1n8LGEqp33BtmyiXFC9IoIZcezV1TlwjaCsPYGEeVljl3dNZBFI5ovg2PcrqP0GIhp4sYjGbEuwJ1bnUZNntYYVuMvfi7_QntlMQa2LGvoWq-VcWdeyUcRIHaNzeYT9prjjNhUsSoqj-9xNBVYNkkMO0cg3lzSCiei2QxBkDpChedgaCvQTuyrpJ75FCi_wh30iO-kijG7LYm9O0KK2wxbR4VbB8T9a-Qwvi0MjnOSjyKu8XbzWlxjfDLdcYOolaIzV8BcCE9ONQh"/>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-[#512D6D]/10 backdrop-blur-xl rounded-full border border-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<h2 class="text-3xl font-headline font-bold mb-8">About NH Connect</h2>
+<div class="space-y-6 text-on-surface-variant leading-relaxed text-lg">
+<p>A comprehensive corporate administration system for Novant Health. Developing specialised mobile and admin applications. A robust management system featuring an intuitive dashboard to meet unique requirements for seamless administrative functionality.</p>
+<p>The vision was to bridge the gap between high-level hospital administration and the ground-level patient experience through a unified, modular interface.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: CONTEXT & PROBLEM -->
+<section class="py-32 max-w-7xl mx-auto px-6">
+<div class="grid lg:grid-cols-3 gap-12">
+<div class="lg:col-span-1">
+<h2 class="text-4xl font-headline font-bold mb-4">Context &amp; <span class="text-error">Problem</span></h2>
+<div class="w-20 h-1 bg-primary mb-8"></div>
+<p class="text-on-surface-variant leading-relaxed">
+                    NH Connect serves as the backbone for over <span class="font-bold text-on-surface">10,000 active patients</span> in the US, acting as their primary digital gateway to Novant Health services.
+                </p>
+</div>
+<div class="lg:col-span-2 grid md:grid-cols-2 gap-8">
+<div class="bg-surface-container-lowest p-10 rounded-lg editorial-shadow">
+<span class="material-symbols-outlined text-4xl purple-accent mb-6" data-icon="sync_problem">sync_problem</span>
+<h3 class="text-xl font-bold mb-4 font-headline">The Bottleneck</h3>
+<p class="text-on-surface-variant">The internal team needed a flexible dashboard (like WordPress/Notion) to manage mobile app content in real-time without developer dependency.</p>
+</div>
+<div class="bg-primary p-10 rounded-lg text-on-primary editorial-shadow">
+<span class="material-symbols-outlined text-4xl mb-6" data-icon="target">target</span>
+<h3 class="text-xl font-bold mb-4 font-headline">Strategic Goal</h3>
+<p class="opacity-90">Reduce iteration cycles from weeks to minutes and empower non-technical stakeholders to orchestrate the digital patient journey autonomously.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: DESIGN PROCESS -->
+<section class="py-32 bg-[#e0e3df]/40">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-20">
+<h2 class="text-4xl font-headline font-bold mb-4">The Design Process</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">A rigorous editorial approach to enterprise software development.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-12">
+<div class="relative">
+<div class="text-8xl font-black text-surface-container-high absolute -top-12 -left-4 z-0">01</div>
 <div class="relative z-10">
-<p class="text-label-md uppercase tracking-widest text-primary mb-4 font-bold">The Vision</p>
-<h2 class="text-3xl font-headline font-semibold max-w-xl">Developing a comprehensive corporate administration system for Novant Health.</h2>
-</div>
-<div class="mt-8 flex gap-3">
-<span class="bg-surface-container-lowest px-4 py-2 rounded-full text-sm font-medium border border-outline-variant/15">Mobile App</span>
-<span class="bg-surface-container-lowest px-4 py-2 rounded-full text-sm font-medium border border-outline-variant/15">Admin Dashboard</span>
-</div>
-<div class="absolute -right-12 -bottom-12 w-64 h-64 bg-primary-container rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
-</div>
-<div class="bg-inverse-surface text-surface rounded-xl p-8 flex flex-col justify-between">
-<div>
-<p class="text-label-md uppercase tracking-widest text-primary-fixed mb-6 font-bold">Metadata</p>
-<div class="space-y-6">
-<div>
-<p class="text-xs text-inverse-on-surface mb-2 uppercase tracking-widest">Tools Used</p>
-<p class="font-medium">Figma, FigJam, Miro, Zoom</p>
-</div>
-<div>
-<p class="text-xs text-inverse-on-surface mb-2 uppercase tracking-widest">My Roles</p>
-<p class="font-medium">Product Designer, UI Designer, UX Researcher</p>
+<h4 class="text-xl font-bold font-headline mb-4">Requirements Gathering</h4>
+<p class="text-on-surface-variant">Closely working with PMs and stakeholders to define the dynamic "Homepage Builder" logic, ensuring scalability across different hospital departments.</p>
 </div>
 </div>
+<div class="relative">
+<div class="text-8xl font-black text-surface-container-high absolute -top-12 -left-4 z-0">02</div>
+<div class="relative z-10">
+<h4 class="text-xl font-bold font-headline mb-4">Component Architecture</h4>
+<p class="text-on-surface-variant">Building a library of 30+ enterprise-grade components in Figma with auto-layout, atomic design principles, and strict accessibility tokens.</p>
 </div>
-<div class="mt-8">
-<div class="flex -space-x-3">
-<div class="w-10 h-10 rounded-full border-2 border-inverse-surface bg-zinc-700"></div>
-<div class="w-10 h-10 rounded-full border-2 border-inverse-surface bg-zinc-600"></div>
-<div class="w-10 h-10 rounded-full border-2 border-inverse-surface bg-zinc-500"></div>
+</div>
+<div class="relative">
+<div class="text-8xl font-black text-surface-container-high absolute -top-12 -left-4 z-0">03</div>
+<div class="relative z-10">
+<h4 class="text-xl font-bold font-headline mb-4">Prototyping &amp; Iteration</h4>
+<p class="text-on-surface-variant">Rapidly prototyping every flow within the admin panel for both web and mobile previews, validating drag-and-drop interactions with end users.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- Section 01 - About -->
-<section class="mb-32">
-<div class="editorial-grid">
-<div class="col-span-1 md:col-span-2">
-<span class="text-primary font-headline font-bold text-5xl opacity-10">01</span>
-<h3 class="text-4xl font-headline font-bold mb-8 -mt-6">About NH Connect</h3>
+<!-- System Thinking (Bento) -->
+<section class="py-section-padding px-8 bg-surface-container-low">
+<div class="max-w-container-max mx-auto">
+<div class="mb-16">
+<h2 class="font-h2 text-h2 text-primary mb-4">System Thinking</h2>
+<p class="font-body-main text-body-main text-secondary">The builder was conceptualized as an ecosystem of six core modules.</p>
 </div>
-<div class="col-span-1 md:col-span-3">
-<p class="text-xl leading-relaxed text-on-surface-variant font-light mb-12">
-                        NH Connect is the backbone of Novant Health's corporate operations. Our mission was to synthesize fragmented administrative tasks into a unified, high-performance ecosystem. We engineered a robust management system paired with an intuitive dashboard that serves both high-level administrators and daily operational staff across the network.
-                    </p>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-<div class="p-6 bg-surface-container-lowest rounded-lg border border-outline-variant/15">
-<span class="material-symbols-outlined text-primary text-3xl mb-4">analytics</span>
-<h4 class="font-bold text-lg mb-2">Management System</h4>
-<p class="text-sm text-on-surface-variant">Real-time data visualization and deep administrative controls for complex health systems.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Content Mgmt -->
+<div class="p-10 bg-white rounded-xl border border-outline-variant shadow-sm shadow-purple-500/5">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">inventory_2</span>
+<h4 class="font-h3 text-h3 text-primary mb-4">Content Management</h4>
+<p class="text-secondary">A centralized asset library for clinical icons, patient health education, and branded imagery.</p>
 </div>
-<div class="p-6 bg-surface-container-lowest rounded-lg border border-outline-variant/15">
-<span class="material-symbols-outlined text-primary text-3xl mb-4">dashboard_customize</span>
-<h4 class="font-bold text-lg mb-2">Intuitive Dashboard</h4>
-<p class="text-sm text-on-surface-variant">A streamlined interface reducing cognitive load for complex task management.</p>
+<!-- Layout -->
+<div class="p-10 bg-white rounded-xl border border-outline-variant shadow-sm shadow-purple-500/5">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">dashboard_customize</span>
+<h4 class="font-h3 text-h3 text-primary mb-4">Layout Config</h4>
+<p class="text-secondary">Grid-based slotting system that ensures components always align with the mobile design system.</p>
+</div>
+<!-- Targeting -->
+<div class="p-10 bg-white rounded-xl border border-outline-variant shadow-sm shadow-purple-500/5">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">target</span>
+<h4 class="font-h3 text-h3 text-primary mb-4">Audience Targeting</h4>
+<p class="text-secondary">Rule-based engine to show different content based on patient location, age, or medical history.</p>
+</div>
+<!-- Scheduling -->
+<div class="p-10 bg-white rounded-xl border border-outline-variant shadow-sm shadow-purple-500/5">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">calendar_month</span>
+<h4 class="font-h3 text-h3 text-primary mb-4">Scheduling</h4>
+<p class="text-secondary">Set-and-forget publishing. Automate seasonal flu shot banners or weekend hours alerts.</p>
+</div>
+<!-- Real-time -->
+<div class="p-10 bg-white rounded-xl border border-outline-variant shadow-sm shadow-purple-500/5">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">phone_iphone</span>
+<h4 class="font-h3 text-h3 text-primary mb-4">Real-time Preview</h4>
+<p class="text-secondary">A persistent mobile simulator that reflects every change in the desktop builder instantly.</p>
+</div>
+<!-- Governance -->
+<div class="p-10 bg-white rounded-xl border border-outline-variant shadow-sm shadow-purple-500/5">
+<span class="material-symbols-outlined text-primary mb-6 text-4xl">admin_panel_settings</span>
+<h4 class="font-h3 text-h3 text-primary mb-4">Governance</h4>
+<p class="text-secondary">Tiered approval workflows ensuring medical content is reviewed by clinical leads before live.</p>
 </div>
 </div>
-</div>
-</div>
-<div class="mt-16 rounded-xl overflow-hidden aspect-[21/9] relative">
-<img alt="Admin Dashboard Preview" class="w-full h-full object-cover" data-alt="Modern clean software interface dashboard with vibrant green data charts, clean typography, and a glassmorphism sidebar on a high-end monitor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0UnSenxKPI4UT-aPz2hN-akqRD5bNHs8o25kzQkik5aaK5RmdfuM8oCGRMA4kCxhPcva4TSBEFYddX6rh8om6dTZbTgs1zHpINnnEzs6ewiax37ebFCDmmPWuWS20_TSi-MUohAlfGxzkuSPJganhFgeZ4Z7OEbVvb9NjGXekOklzq2TdL4BOxfZvDZX1nrsRaeNzHmLlPm_v4ZSVOefoPmaYJhwMTWFL_q4HcdV_Yx8ISOekvdFj8PM2yvULmzyuc6peRkf_hzF-"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
 </div>
 </section>
-<!-- Section 02 - Design Process & Challenges -->
-<section class="mb-32">
-<div class="flex flex-col md:flex-row gap-16">
-<div class="md:w-1/3">
-<span class="text-primary font-headline font-bold text-5xl opacity-10">02</span>
-<h3 class="text-4xl font-headline font-bold mb-8 -mt-6">Design Process</h3>
-<p class="text-on-surface-variant mb-8 leading-relaxed">Our approach combined rigorous user research with rapid high-fidelity prototyping to bridge the gap between technical complexity and user needs.</p>
+<!-- Solution Showdown -->
+<section class="py-section-padding px-8">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2">
+<h2 class="font-h2 text-h2 text-primary mb-6">The Solution: Desktop-to-Mobile Orchestration</h2>
+<p class="font-body-main text-body-main text-secondary mb-8">We built a dual-pane workspace. On the left, the configuration engine; on the right, a high-fidelity rendering of the patient experience. This eliminated the guesswork and reduced errors in content placement.</p>
 <ul class="space-y-4">
-<li class="flex items-center gap-3 font-semibold">
-<span class="w-2 h-2 rounded-full bg-primary-container"></span>
-                            Competitive Analysis
-                        </li>
-<li class="flex items-center gap-3 font-semibold">
-<span class="w-2 h-2 rounded-full bg-primary-container"></span>
-                            User Personas
-                        </li>
-<li class="flex items-center gap-3 font-semibold">
-<span class="w-2 h-2 rounded-full bg-primary-container"></span>
-                            Hi-Fi Wireframes
-                        </li>
+<li class="flex items-center gap-3 text-primary font-medium">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+                                Drag-and-drop component reordering
+                            </li>
+<li class="flex items-center gap-3 text-primary font-medium">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+                                Conditional logic per patient segment
+                            </li>
+<li class="flex items-center gap-3 text-primary font-medium">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+                                Instant validation against healthcare compliance
+                            </li>
 </ul>
 </div>
-<div class="md:w-2/3 bg-surface-container rounded-xl p-10">
-<h4 class="text-2xl font-bold mb-8 flex items-center gap-3">
-<span class="material-symbols-outlined text-error">warning</span>
-                        Core Challenges
-                    </h4>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<div class="bg-surface-container-lowest p-8 rounded-lg bento-hover transition-transform">
-<h5 class="font-bold text-primary mb-3">Revamping Web Apps</h5>
-<p class="text-sm text-on-surface-variant leading-relaxed">Transforming legacy systems into modern, performant web applications without disrupting existing workflows.</p>
-</div>
-<div class="bg-surface-container-lowest p-8 rounded-lg bento-hover transition-transform">
-<h5 class="font-bold text-primary mb-3">Admin Panel Architecture</h5>
-<p class="text-sm text-on-surface-variant leading-relaxed">Designing dedicated client panels that require granular permission settings and diverse data views.</p>
-</div>
-<div class="bg-surface-container-lowest p-8 rounded-lg md:col-span-2 bento-hover transition-transform">
-<h5 class="font-bold text-primary mb-3">Patient-Facing Mobility</h5>
-<p class="text-sm text-on-surface-variant leading-relaxed">Designing a seamless mobile experience for patients that maintains high accessibility standards and immediate access to critical health data.</p>
-</div>
+<div class="lg:w-1/2 bg-surface-container-low p-8 rounded-2xl border border-outline-variant">
+<img alt="Solution Mockup" class="rounded-xl shadow-xl border border-outline-variant" data-alt="A split screen mockup showing a complex admin dashboard with layout nodes on the left and a smartphone app preview with health cards on the right" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAor3lDGvIbCUD8VYo68mx0tPUKb3oXWWeAoaLyYPfHeJLpSz0h0_bSd-3ogEF8_TLJUUwLZezsxX-2FdSZNAMeY-6f2S_hN-w_Dku6iFQROu5t_fMVHub8ufrRYC2xM3jVOcMkeksAwJqG5pIG2Z2gM4qvndk73d6n17sSXMgI6GoxTRBUEG2eQMRyW9s1sRyo7IwII5S04I2MmSwb_w_LiLPMjNAyJiG21m4CdCZ4Ukd3hD9GDLKomvnR8Y0tlC0x0K2PsIAFgNjx"/>
 </div>
 </div>
 </div>
 </section>
-<!-- Section 03 - Process Steps -->
-<section class="mb-32">
-<div class="mb-16 text-center">
-<span class="text-primary font-headline font-bold text-5xl opacity-10">03</span>
-<h3 class="text-4xl font-headline font-bold mb-4 -mt-6">Evolutionary Steps</h3>
-<p class="text-on-surface-variant max-w-2xl mx-auto">A strategic breakdown of our iterative methodology for the NH Connect ecosystem.</p>
+<!-- Key Features Grid -->
+<section class="py-section-padding px-8 bg-white border-t border-b border-gray-100">
+<div class="max-w-container-max mx-auto text-center mb-16">
+<h2 class="font-h2 text-h2 text-primary mb-4">Architecting Efficiency</h2>
+<p class="text-secondary max-w-2xl mx-auto">Five core features that redefined how the organization communicates with patients.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-<!-- Step 1 -->
-<div class="relative group">
-<div class="mb-8 overflow-hidden rounded-xl aspect-square">
-<img alt="Requirements Gathering" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Close up of professional designers collaborating on a large digital screen with wireframes and sticky notes, vibrant lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI4HQhg2I-14uLDy2B2nAdgvF7-vVgZdlWlvHuUeF1VFkuFvOcdDelIl-wbIN7ymnXjtKLJnCuJgj0jh6nj7veNsNju2PpcUg5iRl73Acq2Nc_aer4_YOpei0vPRR1FiWTWAadhNpre4R09DgwHwXfQjRS9AcvC4tHyFhagTBlADfoHrlYmB7J5VrTFDh91fNP8CQCXPAOZGWhF5cTrBbeT1hWRL1sd5XZnAUoWE1ykHtdxUFA3rt94Bmj-gZVet-KL2FLFuUogZnY"/>
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-5 gap-4">
+<div class="p-6 text-center">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">drag_pan</span>
+<h5 class="font-bold text-primary text-sm uppercase tracking-widest mb-2">Drag &amp; Drop</h5>
+<p class="text-xs text-secondary">Fluid component layout management.</p>
 </div>
-<div class="flex items-start gap-4">
-<span class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold font-headline">01</span>
-<div>
-<h4 class="font-bold text-xl mb-3">Essential Requirements</h4>
-<p class="text-sm text-on-surface-variant leading-relaxed">Meticulous requirements gathering with PM team. Dashboard refined for single-page feature access with real-time mobile preview integration.</p>
+<div class="p-6 text-center">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">location_on</span>
+<h5 class="font-bold text-primary text-sm uppercase tracking-widest mb-2">Targeting</h5>
+<p class="text-xs text-secondary">Segment users by clinic proximity.</p>
 </div>
+<div class="p-6 text-center">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">schedule_send</span>
+<h5 class="font-bold text-primary text-sm uppercase tracking-widest mb-2">Scheduling</h5>
+<p class="text-xs text-secondary">Timed content availability.</p>
 </div>
+<div class="p-6 text-center">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">visibility</span>
+<h5 class="font-bold text-primary text-sm uppercase tracking-widest mb-2">Live Preview</h5>
+<p class="text-xs text-secondary">WYSIWYG patient app simulator.</p>
 </div>
-<!-- Step 2 -->
-<div class="relative group">
-<div class="mb-8 overflow-hidden rounded-xl aspect-square">
-<img alt="Iterative Designing" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Minimalist design workspace with high-end mobile app prototypes visible on a smartphone and tablet, soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARJNBhcjgsuKaCIoove1eC0vEONyYkl0-oDmQV_IsvJtIIZnVTAJo6So6rpKTQ8KRBhZEFMk9ieabm5gDSlFXr5ZubH0PhXu_vIKkxe8eGmwVF69Tpifzg2cO6Q2RuJvUz_jknw8HANLpCnGUYhXzwvxg0jyXx2_6Wa_wJu3ghLvwgO5fCtVk3-puE0tIiKx4xEf556RDqoeHOnRUb5CIIK2OI3QuvIXCA2Q5yXOLbXuZHV72TpoGlBPB0zFW2w7aBPavzE0H4fUch"/>
-</div>
-<div class="flex items-start gap-4">
-<span class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold font-headline">02</span>
-<div>
-<h4 class="font-bold text-xl mb-3">Iterative Screen Designing</h4>
-<p class="text-sm text-on-surface-variant leading-relaxed">Continuous improvement journey crafting multiple UI iterations for feature-rich, user-friendly, and adaptable experience across breakpoints.</p>
-</div>
-</div>
-</div>
-<!-- Step 3 -->
-<div class="relative group">
-<div class="mb-8 overflow-hidden rounded-xl aspect-square">
-<img alt="Design Components" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A clean organized design system interface in Figma showing grid of UI components, buttons, and icons with lime green accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0hpbXCG89hZzp-kSCvVdkaTJValDNzibhLdggbdMt1-TYc_gPAQ9dAK7938PRr7eXMcyBJlL1WvFQ4XajDR50l36Fsg38pde_ul033qmwhTyJRzMaROsRnOMv_-3GBShHA-eQxf_OxS8iz5RPT7mE4Np-kise-M_UEC69hruorRe2N2vJzKCJRemX2xgL9D1CR8mElYOos5ZMcaFcc50HkfZ_bh8SoVeY_ptxt05Eph7LQM_RSuFP_b1HCtmX0E953cmHkGdHLC2V"/>
-</div>
-<div class="flex items-start gap-4">
-<span class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold font-headline">03</span>
-<div>
-<h4 class="font-bold text-xl mb-3">Comprehensive Design Components</h4>
-<p class="text-sm text-on-surface-variant leading-relaxed">Reusable components with auto-layout in Figma for consistency across desktop and mobile, building a scalable living library for the dev team.</p>
-</div>
-</div>
+<div class="p-6 text-center">
+<span class="material-symbols-outlined text-primary text-3xl mb-4">rocket_launch</span>
+<h5 class="font-bold text-primary text-sm uppercase tracking-widest mb-2">Publish</h5>
+<p class="text-xs text-secondary">Instant over-the-air updates.</p>
 </div>
 </div>
 </section>
-<!-- Section 04 - Sitemap -->
-<section class="mb-32 bg-inverse-surface text-surface rounded-xl p-12 overflow-hidden relative">
-<div class="relative z-10 grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
-<div class="md:col-span-2">
-<span class="text-primary-fixed font-headline font-bold text-5xl opacity-20">04</span>
-<h3 class="text-4xl font-headline font-bold mb-6 text-white -mt-6">NH Connect Sitemap</h3>
-<p class="text-inverse-on-surface leading-relaxed mb-8">
-                        A fundamental tool for collaboration and UX improvement. This visual overview of scope and complexity serves as the foundation for the entire development lifecycle.
-                    </p>
-<button class="bg-primary-container text-on-primary-fixed px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform flex items-center gap-2">
-                        View Architecture
-                        <span class="material-symbols-outlined">arrow_outward</span>
-</button>
+<!-- Deep Dive -->
+<section class="py-section-padding px-8">
+<div class="case-study-max">
+<h2 class="font-h2 text-h2 text-primary mb-12">Deep Dive: Simplifying Complexity</h2>
+<div class="mb-24 relative">
+<img alt="Deep Dive 1" class="rounded-xl mb-8 border border-outline-variant" data-alt="Close-up of a high-fidelity UI design showing annotated property panels with typography settings and spacing controls in a sleek dark-themed interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdg05nNywY6FYiRnj4pjGjFz8t3_tKdPp84EOUxSNL_N7ty2XUtmcliYcUKnK1K-TOmcFcns6hayAzj361p09rua5iNtbIBh8xq5UIMXMXAms0CTIBaRMdtg8BitENFH4xDdtxFzXeneT3oSm70486iDneEIcuJmFY9uKam_S_HoxX8-v_rPXnmPN_J8N3gc1pFdJdhuZl-MHuRAJg4coqjWxr_dgMRI_VzYvT4k6xUrDVUFx77gesUhXbFwj7ClgMKkMashemkuX-"/>
+<div class="absolute -left-8 top-1/2 w-1 h-24 bg-primary rounded-full"></div>
+<p class="font-body-main text-secondary"><strong>Why this works:</strong> We abstracted complex JSON properties into human-readable labels. Instead of <code>margin-top: 24</code>, users choose from "Relaxed," "Normal," or "Tight" presets. This ensures design consistency without needing CSS knowledge.</p>
 </div>
-<div class="md:col-span-3">
-<div class="grid grid-cols-2 gap-4">
-<div class="h-48 bg-zinc-800 rounded-lg p-6 border border-zinc-700">
-<div class="w-12 h-2 bg-primary-container rounded mb-4"></div>
-<div class="w-full h-1 bg-zinc-700 rounded mb-2"></div>
-<div class="w-3/4 h-1 bg-zinc-700 rounded mb-2"></div>
-<div class="w-1/2 h-1 bg-zinc-700 rounded"></div>
-</div>
-<div class="h-48 bg-zinc-800 rounded-lg p-6 border border-zinc-700 mt-12">
-<div class="w-12 h-2 bg-primary-container rounded mb-4"></div>
-<div class="w-full h-1 bg-zinc-700 rounded mb-2"></div>
-<div class="w-3/4 h-1 bg-zinc-700 rounded mb-2"></div>
-</div>
-<div class="h-48 bg-zinc-800 rounded-lg p-6 border border-zinc-700 -mt-12">
-<div class="w-12 h-2 bg-primary-container rounded mb-4"></div>
-<div class="w-full h-1 bg-zinc-700 rounded mb-2"></div>
-</div>
-<div class="h-48 bg-zinc-800 rounded-lg p-6 border border-zinc-700">
-<div class="w-12 h-2 bg-primary-container rounded mb-4"></div>
-<div class="w-full h-1 bg-zinc-700 rounded mb-2"></div>
-<div class="w-3/4 h-1 bg-zinc-700 rounded"></div>
+<div class="mb-24">
+<img alt="Deep Dive 2" class="rounded-xl mb-8 border border-outline-variant" data-alt="Technical diagram of a healthcare data flow showing nodes for patient records, cloud processing, and the final mobile application UI" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWDrjJ2qDbx9jg8LymLeUZ6grV6t-opJxYrB7HKDLlqOmQNjxJxKNiWVjwGxal5ytbMF738gPbnjMEuwZMlgWqk3-Sh6fYsEz6x4jWeW9JADFpsooOtx22Atgk9wntzwd3qgjfzuclYCRc0pzzf3Gl3LPsSxjRf6kVMxaeoUcgFXRF1ic40djMxYs9JE0WsEfKfIefH50RW8lngKkpPzr7YjhyyBSyQJ8MpEcL55vO45OMCn45oBunU-ZNX2oniuHa0JR3lomvD-Cu"/>
+<p class="font-body-main text-secondary"><strong>How complexity is handled:</strong> The targeting engine uses a "Natural Language Rule Builder." Users create rules like "Show 'Flu Shot Banner' IF 'Patient Age' is 'Greater than 65' AND 'Location' is 'Winston-Salem'."</p>
 </div>
 </div>
-</div>
-</div>
-<!-- Decorative circle -->
-<div class="absolute top-1/2 -right-20 w-96 h-96 bg-primary-container rounded-full blur-[120px] opacity-10"></div>
 </section>
-<!-- Section 05 - Iterations -->
-<section class="mb-32">
-<div class="flex items-center justify-between mb-12">
-<div>
-<span class="text-primary font-headline font-bold text-5xl opacity-10">05</span>
-<h3 class="text-4xl font-headline font-bold -mt-6">Iterations: Web &amp; Mobile</h3>
-</div>
-<div class="flex gap-4">
-<span class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center cursor-pointer hover:bg-surface-container transition-colors">
-<span class="material-symbols-outlined">chevron_left</span>
-</span>
-<span class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center cursor-pointer hover:bg-surface-container transition-colors">
-<span class="material-symbols-outlined">chevron_right</span>
-</span>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-<div class="md:col-span-3 rounded-2xl overflow-hidden aspect-video bg-surface-container-high relative group">
-<img alt="Web Iteration" class="w-full h-full object-cover" data-alt="Sleek modern administrative software interface on a laptop screen featuring complex data visualization and clean white layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUgS5llw4ZSz7C4KWcyJDsRGWQE_ZodYUhI97iTIzAXM3STcfAH51phgl0weuV7JkM5lqba4hLSjSIWnVwpOp1l7zeOnrzgZgsiI8OPMlCEt2941EeqYrfkO5fbG8xAsuqPBTRd_oCM7dDAgb7-St62WKcWiDYrc-5GKrinPbgHhu853OZWx5cqbZwM8VW5IQXsDMMsi0DLhtuSq3WqX0WhehG2zM1ucS7ImmqWJK2EpMEc1UP2RpHeu4lyynGNR6JakliBXsEGTth"/>
-<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-<span class="bg-white text-on-surface px-6 py-3 rounded-full font-bold shadow-lg">Web Version V3.4</span>
-</div>
-</div>
-<div class="rounded-2xl overflow-hidden bg-surface-container-high relative group h-[500px] md:h-auto">
-<img alt="Mobile Iteration" class="w-full h-full object-cover" data-alt="Elegant smartphone app display showing patient health record interface with soft green accents and rounded cards" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLVbqlqKHmp0mkIBmkM75GZhHse9RAxDvdoUHv0Izh5d70NpWa5kFy4WSedU1h4V-32ntFpDCdr7dLCy35wK_nAwUzpnBSPnSNTsrZX7umL5LqB9ocOGUJeRjMja5n3LOZoLc5RQtwYKSauC0fddz-qZ-v_t2IUIfcQG9nQPnVEl1kcGLSsWI8HZEhB95bGK2LNYp4KsxIENyb4ivviyxy4srv_VxGoz3vx3-GaV7K8XouwWsuHjrLZGCUG4Xil6aM_RNtzJhZyfqt"/>
-<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-<span class="bg-white text-on-surface px-6 py-3 rounded-full font-bold shadow-lg">Mobile App V2.1</span>
-</div>
-</div>
-</div>
-<p class="mt-8 text-on-surface-variant font-medium text-center">A cyclical design approach ensuring continuous refinement and efficient problem-solving through stakeholder feedback loops.</p>
-</section>
-<!-- Section 06 - Outcome & Impact -->
-<section class="mb-32">
-<div class="bg-primary-container rounded-[3rem] p-12 md:p-24 relative overflow-hidden">
-<div class="relative z-10 flex flex-col md:flex-row gap-16 items-center">
-<div class="md:w-1/2">
-<span class="text-on-primary-container font-headline font-bold text-5xl opacity-20">06</span>
-<h3 class="text-5xl font-headline font-bold text-on-primary-container mb-8 -mt-6">Outcome &amp; Impact</h3>
-<p class="text-on-primary-container/80 text-xl leading-relaxed mb-10">
-                            Successfully delivered a custom home page builder with 30+ enterprise features after a 6-month intensive design and development cycle. 
-                        </p>
+<!-- Evolution -->
+<section class="py-section-padding px-8 bg-surface-container-low">
+<div class="case-study-max">
+<h2 class="font-h2 text-h2 text-primary mb-8">Evolution &amp; Iteration</h2>
+<p class="text-secondary mb-12">Early prototypes focused heavily on the "infinite canvas" model. User testing revealed that non-designers felt overwhelmed by too much freedom. We pivoted to a **Structured Component Slotting** system which reduced the time-to-publish by 40%.</p>
 <div class="grid grid-cols-2 gap-8">
+<div class="p-6 border border-outline-variant rounded-xl bg-white">
+<div class="text-error font-bold mb-2">V1: Open Canvas</div>
+<p class="text-sm text-secondary">Low consistency, high errors, steep learning curve for clinicians.</p>
+</div>
+<div class="p-6 border border-primary/20 rounded-xl bg-white">
+<div class="text-primary font-bold mb-2">V2: Slot-Based</div>
+<p class="text-sm text-secondary">High consistency, zero errors, 5-minute training time.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Impact -->
+<section class="py-section-padding px-8 bg-primary text-white">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-h2 text-h2 mb-4">The Impact</h2>
+<p class="text-on-primary-container max-w-xl mx-auto">Driving clinical and operational excellence through better tools.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
 <div>
-<p class="text-4xl font-headline font-black text-on-primary-container">30+</p>
-<p class="text-on-primary-container/70 text-sm font-bold uppercase tracking-widest mt-1">New Features</p>
+<div class="font-display text-[64px] font-bold mb-2">92%</div>
+<p class="text-on-primary-container uppercase text-label-caps">Reduction in Dev Tickets</p>
 </div>
 <div>
-<p class="text-4xl font-headline font-black text-on-primary-container">6</p>
-<p class="text-on-primary-container/70 text-sm font-bold uppercase tracking-widest mt-1">Months Cycle</p>
+<div class="font-display text-[64px] font-bold mb-2">14d → 2h</div>
+<p class="text-on-primary-container uppercase text-label-caps">Deployment Speed</p>
+</div>
+<div>
+<div class="font-display text-[64px] font-bold mb-2">2M+</div>
+<p class="text-on-primary-container uppercase text-label-caps">Patients Impacted Yearly</p>
 </div>
 </div>
 </div>
-<div class="md:w-1/2">
-<div class="bg-white/30 backdrop-blur-md rounded-3xl p-10 border border-white/20">
-<h4 class="text-2xl font-bold text-on-primary-container mb-6">Strategic Results</h4>
-<ul class="space-y-6">
-<li class="flex gap-4">
-<span class="material-symbols-outlined text-on-primary-container">check_circle</span>
-<p class="text-on-primary-container font-medium">Strategic website revamp using deep competitor analysis and validated user personas.</p>
-</li>
-<li class="flex gap-4">
-<span class="material-symbols-outlined text-on-primary-container">check_circle</span>
-<p class="text-on-primary-container font-medium">Reduced administrative task completion time by 40% through UX optimization.</p>
-</li>
-<li class="flex gap-4">
-<span class="material-symbols-outlined text-on-primary-container">check_circle</span>
-<p class="text-on-primary-container font-medium">Unified design language across mobile and web for a seamless ecosystem experience.</p>
-</li>
-</ul>
+</section>
+<!-- Project Navigation -->
+<section class="py-24 px-8 border-t border-gray-200">
+<div class="max-w-container-max mx-auto flex justify-between items-center">
+<a class="flex items-center gap-4 text-secondary hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:-translate-x-2 transition-transform">arrow_back</span>
+<div>
+<div class="text-xs uppercase tracking-widest">Previous</div>
+<div class="font-bold">EHR Redesign</div>
 </div>
+</a>
+<a class="flex items-center gap-4 text-right text-secondary hover:text-primary transition-colors group" href="#">
+<div>
+<div class="text-xs uppercase tracking-widest">Next</div>
+<div class="font-bold">Telehealth Hub</div>
 </div>
-</div>
-<!-- Abstract patterns -->
-<div class="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none opacity-5">
-<div class="absolute -top-24 -right-24 w-96 h-96 border-[40px] border-primary-dim rounded-full"></div>
-<div class="absolute bottom-24 left-24 w-64 h-64 border-[20px] border-primary-dim rotate-45"></div>
-</div>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</a>
 </div>
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-[#f5f7f3] dark:bg-zinc-900 w-full rounded-t-[3rem] mt-20">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-12 px-12 py-16 max-w-screen-2xl mx-auto">
-<div class="space-y-6">
-<div class="text-xl font-bold font-['Space_Grotesk'] text-zinc-800 dark:text-zinc-200">NH Connect</div>
-<p class="text-zinc-500 font-['Manrope'] text-sm leading-[160%] max-w-sm">© 2024 Novant Health Connect. The Living Archive. Empowering healthcare professionals with cutting-edge digital infrastructure.</p>
-</div>
-<div class="flex flex-col md:items-end justify-between">
-<div class="flex flex-wrap gap-x-8 gap-y-4 font-['Manrope'] text-sm leading-[160%] md:justify-end">
-<a class="text-zinc-500 hover:text-zinc-800 transition-colors duration-200 hover:underline decoration-[#b2fe3f] decoration-2 underline-offset-4" href="#">Privacy Policy</a>
-<a class="text-zinc-500 hover:text-zinc-800 transition-colors duration-200 hover:underline decoration-[#b2fe3f] decoration-2 underline-offset-4" href="#">Terms of Service</a>
-<a class="text-zinc-500 hover:text-zinc-800 transition-colors duration-200 hover:underline decoration-[#b2fe3f] decoration-2 underline-offset-4" href="#">Accessibility</a>
-<a class="text-zinc-500 hover:text-zinc-800 transition-colors duration-200 hover:underline decoration-[#b2fe3f] decoration-2 underline-offset-4" href="#">Global Directory</a>
-</div>
-<div class="mt-8 flex gap-6 md:justify-end">
-<span class="material-symbols-outlined text-zinc-400 cursor-pointer hover:text-primary transition-colors">language</span>
-<span class="material-symbols-outlined text-zinc-400 cursor-pointer hover:text-primary transition-colors">hub</span>
-</div>
+<footer class="w-full py-16 border-t border-gray-200 bg-white">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="font-space-grotesk text-sm uppercase tracking-widest text-purple-900">
+                © 2024 Alex Carter. Clinical Precision UX.
+            </div>
+<div class="flex gap-8 font-space-grotesk text-sm uppercase tracking-widest">
+<a class="text-gray-400 hover:text-purple-700 transition-colors hover:underline decoration-purple-500 underline-offset-4" href="#">LinkedIn</a>
+<a class="text-gray-400 hover:text-purple-700 transition-colors hover:underline decoration-purple-500 underline-offset-4" href="#">Dribbble</a>
+<a class="text-gray-400 hover:text-purple-700 transition-colors hover:underline decoration-purple-500 underline-offset-4" href="#">Read.cv</a>
 </div>
 </div>
 </footer>
