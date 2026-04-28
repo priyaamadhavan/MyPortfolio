@@ -651,13 +651,7 @@ Style.css  * {
   margin: 0;
   box-sizing: border-box;
 }
-@font-face {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    src: url(/assets/font/Inter-Regular.ttf);
-    /* src: url(/assets/font/inter/Inter-VariableFont_slnt\,wght.ttf); */
-}
+
 
 button:focus {
     outline: transparent !important;
@@ -692,7 +686,6 @@ button:focus {
   background: #F5F3EF;
 }
 
-h1,h2,h3,h4,h5,h6,p,a {font-family:'Inter', sans-serif;}
 ul{
     list-style: none;
 }
